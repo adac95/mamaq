@@ -1,0 +1,58 @@
+:root {
+    --font-family: 'Quicksand', sans-serif; 
+}
+
+html {
+    font-family: var(--font-family);
+    font-size: 62.5%;
+    list-style: none;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    margin: 0px;
+    padding: 0px;   
+}
+
+*, body {
+    margin: 0px;
+    padding: 0px;   
+    box-sizing: border-box;
+}
+
+.a {
+    text-decoration: none;
+}
+.btn {
+    outline: none;
+    border: none
+}
+
+.create-item-section {
+    width: 100vw;
+    height: 30vh;
+}
+.create-item__form {
+    width: inherit;
+    height: inherit;
+    margin: 1rem 0 0 1rem;
+}
+
+.form__label {
+    /* border: solid 1px red; */
+    display: flex;
+    justify-content: space-between;
+    max-width: 300px;
+
+    padding:0.3rem;
+    
+    font-size: 1.4rem;
+}
+
+.form__input--submit {
+    padding: 0.8rem;
+    border-radius: 15px;
+    border: none;
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 300px;
+}
