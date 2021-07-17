@@ -1,0 +1,463 @@
+:root {
+    --primary-color:#2d2d2d;
+    --primary-color-opacity:#2d2d2dce;
+    --second-color: rgb(194, 191, 191);
+    --third-color: #110f0f;
+    --white-color: #ffffff;
+    --orange-color: #f90;
+    --font-family: 'Quicksand', sans-serif; 
+}
+
+html {
+    font-family: var(--font-family);
+    font-size: 62.5%;
+    list-style: none;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    margin: 0px;
+    padding: 0px;   
+}
+
+*, body {
+    margin: 0px;
+    padding: 0px;   
+    box-sizing: border-box;
+}
+
+.a {
+    text-decoration: none;
+}
+.btn {
+    outline: none;
+    border: none
+}
+
+.h3 {
+    font-size: 3rem;
+    display: inline-block;
+    height: auto;
+}
+
+.header {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+    background-color: var(--primary-color-opacity);
+    z-index: 900;
+}
+.h1{
+    display: none;
+}
+.h1__a {
+    font-size: 2.1rem;
+    /* line-height: 1px; */
+    /* letter-spacing: 4px; */
+    font-weight: 200;
+}
+
+.header__img-container{
+    width: 70px;
+    height: 100%;
+    display:inline-block;
+}
+
+.header__img {
+    width: inherit; 
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    height: calc(100% - 70px);
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    transform: translate(-100%,0);
+    transition: transform 0.5s ease;
+    background-color: var(--primary-color);
+}
+
+.nav__a {
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    font-size: 1.6rem;
+    width: 100%;
+    height: 100%;
+    vertical-align: center;
+    color: var(--second-color);
+}
+
+.nav-active {
+    transform: translate(0%,0);   
+}
+
+.nav__btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    bottom: 15px;
+    border: none;
+    outline: none;
+}
+
+
+/*        SLIDES        */
+
+.slides-container {
+    width: 100%;
+    min-height: 50vh;
+    position: relative;
+    z-index: 800;
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .3s ease;
+    z-index: 800;
+}
+
+.slide__img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 800;
+}
+
+.slide-active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.slide__btn {
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 20px;
+    font-size: 1.6rem;
+    border-radius: 50px;
+    position: relative;
+    z-index: 800;
+    border: none;
+}
+
+
+/* WPP BTN */
+.slide__btn-one {
+    left: -40px;
+    bottom: 40px;
+    background-color: rgb(23, 216, 55);
+    color: #fff;
+}
+
+
+.slide__btn-one:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+/* RESERVA BTN */
+
+.slide__btn-two {
+    bottom: 60px;
+    background-color: rgba(229, 0, 0, 0.75); 
+}
+
+.slide-arrow-btn {
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    margin: 0 5px;
+    text-align: center;
+    border-radius: 50px;
+    font-size: 1.5rem;
+    font-weight: 900;
+    background-color: rgba(90, 89, 89, 0.473);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    z-index: 800;
+}
+
+.slide-btn-arrow-container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+/*      HOME OPTIONS        */
+
+.home-options-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.home-options-figure {
+    width: 35vh;
+    height: 46vh;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    position: relative;
+}
+
+.home-options__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* BOTONES DE OPTIONS */
+
+.home-options__a {
+    display: inline-block;
+    background-color: transparent;
+    border: 2px solid #ebebeb;
+    border-radius: 50px;
+    padding: 8px 20px;
+    font-size: 1.3rem;
+    font-weight: 400;
+    letter-spacing: 0.8px;
+    color: #ebebeb;
+    cursor: pointer;
+    margin-bottom: 1.3rem;
+    align-self: center;
+    position: absolute;
+    z-index: 800;
+}
+/* 
+.option-menu-three {
+    align-self: flex-end;
+    margin-right: 2rem; 
+} */
+
+.home-options__a:hover {
+    background-color: #ebebeb;
+    color: #666;
+}
+
+/*  NUESTRA PROPUESTA        */
+
+
+.propuesta-container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.propuesta-tittle {
+    text-align: center;
+    padding: 1rem;
+    width: 100%;
+}
+
+.propuesta-tittle__h3 {
+    color: #2d2d2d;
+}
+
+.propuesta-tittle__h3--green {
+    color: rgba(89,214,0,0.23);
+    letter-spacing: 1px;
+}
+
+.propuesta__img-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.propuesta__img {
+    width: 250px;
+    height: auto;
+    margin: 1rem;
+}
+
+.propuesta__video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+
+video {
+    width: 80%;
+    margin: 10px 0;
+}
+
+/* IMG BAR */
+
+.img-bar {
+    width: 100%;
+    display: flex;
+    justify-content:space-around;
+    margin: 5px 0;
+}
+
+.img-bar__img {
+    display: inline-block;
+    min-width: 50px;
+    max-width: 100px;
+    padding: 10px;
+}
+
+/* RESERVA - BANNER */
+
+.reserva-banner {
+    position: relative;
+}
+
+.reserva-banner__img{
+    width: 100%;
+    height: 35vh;
+    max-height:300px;
+    object-fit: cover;
+}
+
+.reserva-banner__info {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    color: var(--white-color);
+}
+
+.reserva-banner__h3 {
+    font-size: 2.2rem;
+    font-weight: bolder;
+}
+.reserva-banner__p {
+    font-size:1.6rem;
+    margin: 10px;
+}
+.reserva-banner__a {
+    width: fit-content;
+    padding:10px;
+    margin-top: 20px;
+    border-radius: 50px;
+    font-size: 1.6rem;
+    color: var(--white-color);
+    background-color: var(--orange-color)
+}
+
+/* Contacto */
+
+.contacto {
+    width:100%;
+    height: auto;
+    margin: 15px 0px 30px 0px;
+}
+
+.contacto__span {
+    display: block;
+    text-align: center;
+    color: var(--primary-color-opacity);
+    font-size: 1.5rem;
+}
+
+.contacto__h3 {
+    display:block;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.contacto__input{
+    display: block;
+    width: 80%;
+    height: 4rem;
+    margin:11px auto 0px;
+    padding-left: 1.5rem;
+    border: 1px solid var(--primary-color-opacity)
+}
+
+.contacto__input--textarea {
+    display: block;
+    width: 80%;
+    margin: 11px auto 0px;
+    padding: 1.5rem;
+    border: 1px solid var(--primary-color-opacity)
+}
+
+.contacto__input--placeholder::placeholder {
+    font-family: var(--font-family);
+    font-size: 1.5rem;
+}
+
+.contacto__submit {
+    display: block;
+    width: 80%;
+    height: 4rem;
+    margin:11px auto 0px;
+    color: var(--white-color);
+    background-color: var(--orange-color);
+    border: none;
+}
+
+/* FOOTER */
+
+.footer{
+    width: 100%;
+    height:80px;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.footer__redes {
+    text-align: center;
+    margin: auto;
+    padding-left: 15px;
+}
+
+.footer__redes-img {
+    width: 60%;
+    margin: 0.5rem auto 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer__contacto {
+    text-align: center;
+    margin: auto;
+}
+
+.header-movil{
+    display:block;
+    height:70px;
+    /* background-color: var(--primary-color); */
+    background-color: red;
+}

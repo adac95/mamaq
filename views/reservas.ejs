@@ -1,0 +1,36 @@
+<%- include('templates/head', {tittle: 'Mamaq reservas'}) %>
+        <main>
+            <section class="hero-container">
+                <img class="hero__img" src="../public/assets/mamaq-salon.jpg" alt=""> 
+                <h3 class="h3 hero__h3">Reservaciones</h3>
+            </section>
+            <section class="reserva-container">
+                <form class="reserva__form">
+                    <p class="p reserva__p--gris">¡Reserva tu mesa!</p>
+                    <p class="p reserva__p">Separa el día de tu visita, no olvides que nuestro aforo es limitado 😉</p>
+                    <div class="reserva__form-div">
+                        <label class="reserva__label" for="fecha">📅 Fecha</label>
+                        <input class="reserva__input" type="date" name="fecha" id="fecha" required>
+                        <label class="reserva__label" for="clientes">🙍 Nro de clientes</label>
+                        <input class="reserva__input" type="number" name="" id="clientes" required>
+                        <label class="reserva__label" for="hora">🕐 Hora</label>
+                        <input class="reserva__input" type="time" id="hora" required>
+                        <label class="reserva__label" for="nombre">Nombre*</label>
+                        <input class="reserva__input" type="text" id="nombre" required>
+                        <label class="reserva__label" for="email">Email*</label>
+                        <input class="reserva__input" type="email" name="email" id="email">
+                        <label class="reserva__label" for="telf">Teléfono*</label>
+                        <input class="reserva__input" type="text" name="telf" id="tefl" required>
+                        <label class="reserva__label" for="mensaje">Mensaje*</label>
+                        <input class="reserva__input" type="text" name="" id="">
+                        <input class="reserva__input reserva__input--submit" type="submit" value="Reservar">
+                    </div>
+                </form>
+                <div class="reserva__mapa-container">
+                    <div id="mapa-div" class="reserva__mapa"></div>
+                    <button id="reserva-mapa" class="btn mapa__btn">Quieres ver el mapa?</button>
+                </div>
+            </section>
+            <%- include('templates/footer') %>
+    </body>
+</html>
