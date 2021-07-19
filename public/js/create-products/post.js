@@ -15,6 +15,7 @@ export default function post(url) {
                     name: e.target.name.value,
                     price: e.target.price.value,
                     category: e.target.category.value,
+                    description: e.target.description.value,
                 })
             };
 

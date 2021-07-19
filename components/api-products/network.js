@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    controller.addProduct(req.body.name, req.body.price, req.body.category).then((data) => {
+    controller.addProduct(req.body.name, req.body.price, req.body.category, req.body.description).then((data) => {
         response.success(req, res, data, 200)
     }).catch((err) => {
         response.error(req, res, 'problemas al crear product', 500, err)
@@ -20,7 +20,7 @@ router.post('/', (req, res) => {
 })
 
 router.patch('/:id', (req, res) => {
-    controller.patchProduct(req.params.id, req.body.name, req.body.price, req.body.category).then((data) => {
+    controller.patchProduct(req.params.id, req.body.name, req.body.price, req.body.category, req.body.description).then((data) => {
         response.success(req, res, data, 200)
     }).catch((err) => {
         response.error(req, res, 'problemas al actualizar producto', 500, err)

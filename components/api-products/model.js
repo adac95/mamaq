@@ -3,8 +3,9 @@ const Schema = mongoose.Schema
 
 const mySchema = new Schema({
     name: String,
-    price: Number,
     category: String,
+    price: Number,
+    description: String,
 })
 
 const model = mongoose.model('products', mySchema)

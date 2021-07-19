@@ -29,7 +29,7 @@ html {
 
 .create-item-section {
     width: 100vw;
-    height: 30vh;
+    min-height: 50%;
 }
 .create-item__form {
     width: inherit;

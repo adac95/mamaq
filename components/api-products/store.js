@@ -10,13 +10,14 @@ function addProducts(data) {
     newProduct.save()
 }
 
-async function patchProducts(id, name, price, category) {
+async function patchProducts(id, name, price, category, description) {
   try{
     const foundProductById = await Model.findById(id)
     if(name || price) {
         foundProductById.name = name
         foundProductById.price = price
         foundProductById.category = category
+        foundProductById.description = description
         const updateProduct = await foundProductById.save()
         return updateProduct
 

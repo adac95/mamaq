@@ -6,25 +6,25 @@ function getAllproducts() {
     })
 }
 
-function addProduct(name, price, category) {
+function addProduct(name, price, category, description) {
     return new Promise((resolve, reject) => {
-        if(!name || !price || !category) {
+        if(!name || !price || !category || !description) {
             console.log('falta completar datos')
             reject('faltan completar datos para crear producto')
             return false
         }
 
-        let data = {name,price, category}
+        let data = {name,price, category, description}
         store.addProducts(data)
         return resolve(data)
     })
 }
 
-function patchProduct(id, name, price, category) {
+function patchProduct(id, name, price, category, description) {
     return new Promise(async (resolve, reject) => {
-        if(!name || !price || !category) reject('Invalid data to update') 
+        if(!name || !price || !category || !description) reject('Invalid data to update') 
         
-        const result = store.patchProducts(id,name,price,category)
+        const result = store.patchProducts(id,name,price,category, description)
         resolve(result)   
     })
 }

@@ -1,9 +1,3 @@
-
-// const d = document,
-//             $table = d.querySelector(".items-table"),
-//             $template = d.getElementById("items-template").content,
-//             $fragment = d.createDocumentFragment();
-
         export default async function getAll(url,table,template,fragment) {
                 try {
                     let res = await fetch(url)
@@ -12,19 +6,17 @@
     
                     if (!res.ok) throw { status: res.status, statusText: res.statusText }
     
-    
-                    // let cuerpo = json.body
-                    // ant = [...cuerpo]
-                    // console.log(body, error)
                     body.forEach(el => {
                         template.querySelector(".item-name").textContent = el.name;
                         template.querySelector(".item-price").textContent = el.price;
                         template.querySelector(".item-category").textContent = el.category;
+                        template.querySelector(".item-description").textContent = el.description;
                         template.querySelector(".edit-btn").dataset._id = el._id;
                         template.querySelector(".item-tr").dataset._id = el._id;
                         template.querySelector(".item-tr").dataset.name = el.name;
                         template.querySelector(".item-tr").dataset.price = el.price;
                         template.querySelector(".item-tr").dataset.category = el.category;
+                        template.querySelector(".item-tr").dataset.description = el.description;
                         template.querySelector(".delete-btn").dataset._id = el._id;
     
                         let clone = document.importNode(template, true);
