@@ -10,14 +10,29 @@ export default function patch(table, url) {
             // encontrar la fila del id que necesitamos
             const tr = trs.find(el => el.dataset._id == id)
             // crear inputs para editar
+            // name
             const $input = document.createElement("input");
+            // price
             const $input1 = document.createElement("input");
-            const $input2 = document.createElement("input");
+            // Select y sus options
+            const $input2 = document.createElement("select");
+            const $veggieOption = document.createElement("option");
+            const $veganOption = document.createElement("option");
+            const $meatOption = document.createElement("option");
+            // description
             const $input3 = document.createElement("input");
+            // img
+            const $input4 = document.createElement("input")
             $input.type = "text"
             $input1.type = "number"
-            $input2.type = "text"
             $input3.type = "text"
+            $input4.type = "file"
+            $veggieOption.value = "Vegetariano"
+            $veggieOption.text = "Vegetariano"
+            $veganOption.value = "Vegano"
+            $veganOption.text = "Vegano"
+            $meatOption.value = "Carnivoro"
+            $meatOption.text = "Carnivoro"
             // Crear div para mensaje de error en caso quieran mandar un input vacio
             const $divMessage = document.createElement("div");
             $divMessage.classList.add("divMessage")
@@ -32,8 +47,12 @@ export default function patch(table, url) {
                 tr.querySelector(".item-category").appendChild($input2).value = tr.dataset.category
                 tr.querySelector(".item-description").textContent = ""
                 tr.querySelector(".item-description").appendChild($input3).value = tr.dataset.description
+                // tr.querySelector(".item-description").appendChild($input3).value = tr.dataset.description
+                $input2.appendChild($veggieOption)
+                $input2.appendChild($veganOption)
+                $input2.appendChild($meatOption)
 
-                addEventListener("keyup", el => {
+                addEventListener("input", el => {
                     e.target.dataset.name = $input.value
                     e.target.dataset.price = $input1.value
                     e.target.dataset.category = $input2.value
@@ -91,7 +110,6 @@ export default function patch(table, url) {
                     
                     return false
                 }
-                
                 // MANDAR PETICION
                 let options = {
                     method: "PATCH",

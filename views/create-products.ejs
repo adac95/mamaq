@@ -14,16 +14,24 @@
         <section class="create-item-section">
             <form class="create-item__form" id="createForm">
                 <label class="form__label" for="name">Nombre
-                    <input class="form__input" type="text" id="name" required>
+                    <input class="form__input" type="text" id="name" name="name" required>
                 </label>
                 <label class="form__label" for="price">Precio
-                    <input class="form__input" type="number" id="price" required>
+                    <input class="form__input" type="number" id="price" name="price" required>
                 </label>
                 <label class="form__label" for="category">Categoria
-                    <input class="form__input" type="text" id="category" required>
+                    <!-- <input class="form__input" type="" id="category" required> -->
+                    <select name="category" class="form__input">
+                        <option class="form__input">Vegetariano</option>
+                        <option class="form__input">Vegano</option>
+                        <option class="form__input">Carnivoro</option>
+                    </select>
                 </label>
                 <label class="form__label" for="description">Descripcion
-                    <input class="form__input" type="text" id="description" required>
+                    <input class="form__input" type="text" id="description" name="description" required>
+                </label>
+                <label class="form__label" for="createProductImg">Imagen
+                    <input class="form__input" type="file" name="createProductImg" id="product-image" >
                 </label>
                 <input class="form__input form__input--submit" type="submit" value="Crear item">
             </form>
@@ -36,7 +44,8 @@
                         <th>Nombre</th>
                         <th>Precio</th>
                         <th>Categoria</th>
-                        <th>descripcion</th>
+                        <th>Descripcion</th>
+                        <th>Imagen</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -50,6 +59,7 @@
             <td class="item-price"></td>
             <td class="item-category"></td>
             <td class="item-description"></td>
+            <td class="item-image"></td>
             <td class="td-btn">
                 <button class="edit-btn">Editar</button>
                 <button class="delete-btn">Eliminar</button>

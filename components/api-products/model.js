@@ -6,6 +6,14 @@ const mySchema = new Schema({
     category: String,
     price: Number,
     description: String,
+    imagen: { 
+        filename: {type: String},
+        path: {type: String},
+        originalname: {type: String},
+        mimetype: {type: String},
+        size: { type: Number},
+        created_at: {type: Date, default: Date.now()}
+    }
 })
 
 const model = mongoose.model('products', mySchema)

@@ -24,9 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
             responsiveMap()
             break;
 
-        case "/carta":
-            getCarta(apiUrl)
-            break;
+        // case "/carta":
+        //     getCarta(apiUrl)
+        //     break;
     }
 
 })

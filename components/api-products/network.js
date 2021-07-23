@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    controller.addProduct(req.body.name, req.body.price, req.body.category, req.body.description).then((data) => {
+    controller.addProduct(req.body.name, req.body.price, req.body.category, req.body.description, req.file).then((data) => {
         response.success(req, res, data, 200)
     }).catch((err) => {
         response.error(req, res, 'problemas al crear product', 500, err)

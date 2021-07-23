@@ -10,8 +10,9 @@ const d = document,
     $template = d.getElementById("items-template").content,
     $fragment = d.createDocumentFragment();
 
+
+post(apiUrl)
 getAll(apiUrl, $table, $template, $fragment);
 // delete tiene que ir antes que patch porque sino al presionar cancelar patch se manda como peticion delete
 deleteProduct($table, apiUrl)
-post(apiUrl)
 patch($table, apiUrl)

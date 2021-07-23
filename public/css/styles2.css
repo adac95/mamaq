@@ -5,6 +5,7 @@
     --third-color: #110f0f;
     --white-color: #ffffff;
     --orange-color: #f90;
+    --header-color: #532429e7;
     --font-family: 'Quicksand', sans-serif; 
 }
 
@@ -46,7 +47,7 @@ html {
     justify-content: space-between;
     position: fixed;
     bottom: 0;
-    background-color: var(--primary-color-opacity);
+    background-color: var(--header-color);
     z-index: 900;
 }
 .h1{
@@ -458,6 +459,6 @@ video {
 .header-movil{
     display:block;
     height:70px;
-    /* background-color: var(--primary-color); */
-    background-color: red;
+    background-color: var(--header-color);
+
 }

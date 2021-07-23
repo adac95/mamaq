@@ -6,7 +6,6 @@ html {
     font-family: var(--font-family);
     font-size: 62.5%;
     list-style: none;
-    overflow-x: hidden;
     box-sizing: border-box;
     scroll-behavior: smooth;
     margin: 0px;
@@ -17,6 +16,7 @@ html {
     margin: 0px;
     padding: 0px;   
     box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 .a {
@@ -30,11 +30,11 @@ html {
 .create-item-section {
     width: 100vw;
     min-height: 50%;
+    padding: 1rem 0 0 1rem;
 }
 .create-item__form {
     width: inherit;
     height: inherit;
-    margin: 1rem 0 0 1rem;
 }
 
 .form__label {
@@ -42,12 +42,13 @@ html {
     display: flex;
     justify-content: space-between;
     max-width: 300px;
-
     padding:0.3rem;
-    
     font-size: 1.4rem;
 }
 
+.form__input {
+    width: 70%
+}
 .form__input--submit {
     padding: 0.8rem;
     border-radius: 15px;

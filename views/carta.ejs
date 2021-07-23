@@ -1,13 +1,24 @@
 <%- include('templates/head', {tittle: 'La carta'}) %>
-    <h1>La Carta</h1>
-    <div id="cartaContainer"></div>
-    <template id="cartaTemplate" class="template">
-        <div class="template-div">
-            <h3 class="template-product"></h3>
+    <img class="carta__img" src="../public/assets/WEB-MAMAQ_CARTAheader.jpg" alt="imagen de la carta">
+    <div id="cartaContainer" class="carta__template-container">
+        <% imgUploads.forEach(img => { %>
+            <img class="template-img" src="<%= img.imagen.path %>" alt="IMG">
+            <span class="template-name-price">
+                <h3 class="template-product"><%= img.name %></h3>
+                <p class="template-price"><%= img.price %></p>
+            </span>
+            <p class="template-description"><%= img.description %></p>
+            <p class="template-category"><%= img.category %></p>
+        <% }); %>
+    </div>
+    <!-- <template id="cartaTemplate" class="template">
+            <img class="template-img"" src="" alt="IMG">
+            <span class="template-name-price">
+                <h3 class="template-product"></h3>
+                <p class="template-price"></p>
+            </span>
             <p class="template-description"></p>
             <p class="template-category"></p>
-            <p class="template-price"></p>
-        </div> 
-    </template>
-    <script type="module" src="../public/js/main.js"></script>
+    </template> -->
+    <!-- <script type="module" src="../public/js/main.js"></script> -->
     <%- include('templates/footer') %>
