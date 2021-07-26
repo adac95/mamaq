@@ -1,0 +1,42 @@
+@media screen and (min-width: 426px) {
+    /* SLIDES */
+    .slides-container {
+        height: 82vh;
+    }
+    /* OPTIONS */
+    .home-options-figure {
+        height: 60vh;
+    }
+    /* Nuestra Propuesta */
+    .propuesta-tittle__h3{
+        font-size: 4rem;
+    }
+}
+
+@media screen and (min-width: 770px) {
+    /* Nuestra Propuesta */
+    .propuesta__img-container {
+        width: 70%;
+        margin: auto;
+    }
+    /* img-bar */
+    .img-bar {
+        margin: 2rem auto;
+        padding: 2rem 0;
+    } 
+    .img-bar__img{
+        min-width: none;
+        max-width: none;
+        width: 10vw;
+    }
+}
+
+@media screen and (min-width: 1146px) {
+    /* Nuestra Propuesta */
+    .propuesta__img-container {
+        width: 100%;
+    }
+    .propuesta__img-vide-container {
+        flex-direction: row;
+    }
+}

@@ -5,7 +5,7 @@
     --third-color: #110f0f;
     --white-color: #ffffff;
     --orange-color: #f90;
-    --header-color: #532429e7;
+    --header-color-mobile: #532429e7;
     --font-family: 'Quicksand', sans-serif; 
 }
 
@@ -39,6 +39,10 @@ html {
     display: inline-block;
     height: auto;
 }
+.main {
+    max-width: 2100px;
+    margin: auto;
+}
 
 .header {
     width: 100%;
@@ -47,7 +51,7 @@ html {
     justify-content: space-between;
     position: fixed;
     bottom: 0;
-    background-color: var(--header-color);
+    background-color: var(--header-color-mobile);
     z-index: 900;
 }
 .h1{
@@ -97,6 +101,12 @@ html {
     color: var(--second-color);
 }
 
+.nav__img {
+    width: 1.8rem;
+    height: 1.8rem;
+    fill: var(--white-color);
+}
+
 .nav-active {
     transform: translate(0%,0);   
 }
@@ -118,7 +128,7 @@ html {
 
 .slides-container {
     width: 100%;
-    min-height: 50vh;
+    height: 50vh;
     position: relative;
     z-index: 800;
 }
@@ -152,14 +162,19 @@ html {
 }
 
 .slide__btn {
-    cursor: pointer;
     display: inline-block;
+    min-width: fit-content;
+    position: relative;
+    width: 20vw;
+    height: 6vh;
+    cursor: pointer;
     padding: 5px 20px;
     font-size: 1.6rem;
     border-radius: 50px;
-    position: relative;
     z-index: 800;
     border: none;
+    text-align: center;
+    line-height: 28px;
 }
 
 
@@ -180,6 +195,7 @@ html {
 /* RESERVA BTN */
 
 .slide__btn-two {
+    color: #000;
     bottom: 60px;
     background-color: rgba(229, 0, 0, 0.75); 
 }
@@ -256,11 +272,6 @@ html {
     position: absolute;
     z-index: 800;
 }
-/* 
-.option-menu-three {
-    align-self: flex-end;
-    margin-right: 2rem; 
-} */
 
 .home-options__a:hover {
     background-color: #ebebeb;
@@ -290,7 +301,11 @@ html {
     color: rgba(89,214,0,0.23);
     letter-spacing: 1px;
 }
-
+.propuesta__img-vide-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
 .propuesta__img-container {
     display: flex;
     flex-wrap: wrap;
@@ -310,8 +325,9 @@ html {
     align-items: center;
 } 
 
-video {
-    width: 80%;
+.propuesta__video {
+    width: 90%;
+    max-height: 90%;
     margin: 10px 0;
 }
 
@@ -322,6 +338,7 @@ video {
     display: flex;
     justify-content:space-around;
     margin: 5px 0;
+    border: solid 1px #a1a0a065;
 }
 
 .img-bar__img {
@@ -432,6 +449,7 @@ video {
 .footer{
     width: 100%;
     height:80px;
+    font-weight: 100;
     background-color: var(--primary-color);
     color: var(--white-color);
     display:grid;
@@ -450,15 +468,34 @@ video {
     display: flex;
     justify-content: space-around;
 }
-
+.footer__a-redes {
+    display: inline-block;
+    height: 3rem;
+}
+.footer__img-nav {
+    width: 1.8rem;
+    height: 1.5rem;
+    fill: var(--white-color);
+}
 .footer__contacto {
     text-align: center;
     margin: auto;
 }
 
+.footer__a-container {
+    display: none;
+}
+.footer__redes-p {
+    display: none;
+}
+.footer__logo {
+    display: none;
+}
 .header-movil{
     display:block;
     height:70px;
     background-color: var(--header-color);
-
+}
+.header-movil__p {
+    display: none;
 }

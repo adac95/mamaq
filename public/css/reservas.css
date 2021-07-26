@@ -26,11 +26,19 @@
 
 .reserva-container {
     padding: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
     /* margin: auto; */
 }
 
 /* FORM */
-
+.reserva__form {
+    /* width: auto; */
+    margin: auto;
+}
 .reserva__p {
     font-size: 1.3rem;
     color: var(--primary-color-opacity);
@@ -106,7 +114,12 @@
     color: var(--white-color)
 }
 
+.reserva__mapa-container {
+    width: fit-content;
+
+}
+
 .reserva__mapa iframe{
     width: 90vw;
-    height: 70vh;
+
 }

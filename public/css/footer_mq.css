@@ -1,0 +1,76 @@
+@media screen and (min-width: 426px) {
+    .footer {
+        width: 100%;
+        height: 35vh;
+        max-height: 340px;   
+        display: flex;
+        justify-content: space-around;
+        font-size: 1.4rem;
+        background-image: url("../assets/WEB-MAMAQ_footer.png");
+    }
+    .footer__redes {
+        width: 30%;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column-reverse;
+        padding: initial;
+        margin: unset;
+    }
+    .footer__redes-img {
+        flex-direction: column;
+        margin: unset;
+        width: 100%;
+    }
+    .footer__redes-p {
+        display: block;
+        letter-spacing: 1.8px;
+        margin-bottom: .5rem;
+    }
+    .footer__redes--span {
+        display: block;
+        width: 100%;
+    }
+    .footer__img-nav {
+        width: 3rem;
+        height: 3rem;
+        padding: 0 .5rem;
+    }
+    .footer__contacto {
+        width: 30%;
+        line-height: 20px;
+        margin: unset;
+        align-self: center;
+    }
+    .footer__logo{
+        display: block;
+        margin: auto;
+        width: 100px;
+    }
+    .footer-mensaje-p {
+        margin-bottom: 1rem;
+    }
+    .footer__a-container {
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+    }
+    .footer__a-nav {
+        color: var(--white-color);
+        letter-spacing: 6px;
+        text-align: center;
+    }
+    .header-movil {
+        height: 35px;
+        background-color: var(--primary-color);
+
+    }
+    .header-movil__p {
+        display: flex;
+        justify-content:center;
+        font-size: 1.2rem;
+        font-weight: 100;
+        color: var(--white-color);
+        padding-left: 1rem;
+    }
+}

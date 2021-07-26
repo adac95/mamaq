@@ -1,15 +1,15 @@
-<%- include('templates/head', {tittle: 'Mamaq café'}) %>
- <main class="main">
+<%- include('templates/head', {tittle: 'Mamaq café' }) %>
+    <main class="main">
         <section id="inicio" class="slider-section">
             <!--         SLIDER               -->
             <div class="slides-container">
                 <div class="slide slide-active slide-one">
                     <img class="slide__img" src="../public/assets/WEB-MAMAQ_BANNER-1.jpg">
-                        <button id="slideBtnOne" class="button slide__btn slide__btn-one">Vía whatsapp</button>
+                    <a href="https://wa.me/51989070874" rel="noopener" target="_blank" class="a slide__btn slide__btn-one">Vía whatsapp</a>
                 </div>
                 <div class="slide slide-two">
                     <img class="slide__img" src="../public/assets/header1_mamaq.jpg">
-                        <button id="slideBtnTwo" class="button slide__btn slide__btn-two">Reserva aquí!</button>
+                    <a href="/reservas" class="a slide__btn slide__btn-two">Reserva aquí!</a>
                 </div>
                 <div class="slide slide-three">
                     <img class="slide__img" src="../public/assets/WEB-MAMAQ_BANNER-2.jpg">
@@ -21,48 +21,58 @@
             </div>
             <!--             OPTIONS           -->
             <div class="home-options-container">
-                <figure class= "home-options-figure">
+                <figure class="home-options-figure">
                     <img class="home-options__img home-options__img-one" src="../public/assets/WEB-MAMAQ_BOX-1.jpg">
                     <button class="btn home-options__btn home-options__a">Pide vía whatsapp</button>
-                </figure>    
-                <figure class= "home-options-figure">
-                    <img class="home-options__img home-options__img-two" src="../public/assets/mamaq-reserva.jpg">
-                    <a class="a home-options__a" href="#">Reserva aquí!</a>
                 </figure>
-                <figure class= "home-options-figure">
+                <figure class="home-options-figure">
+                    <img class="home-options__img home-options__img-two" src="../public/assets/mamaq-reserva.jpg">
+                    <a class="a home-options__a" href="/reservas">Reserva aquí!</a>
+                </figure>
+                <figure class="home-options-figure">
                     <img class="home-options__img home-options__img-three" src="../public/assets/WEB-MAMAQ_BOX-2.jpg">
-                    <a href="#" class="a home-options__a option-menu-three">La carta!</a>
-                </figure>    
+                    <a href="/carta" class="a home-options__a option-menu-three">La carta!</a>
+                </figure>
             </div>
         </section>
         <!--       NUESTRA PROPUESTA         -->
         <section id="nuestra-propuesta" class="propuesta-section">
             <div class="propuesta-container ">
                 <div class="propuesta-tittle">
-                    <h3 class="h3 propuesta-tittle__h3--green">Corazón Verde</h3><br>
+                    <h3 class="h3 propuesta-tittle__h3 propuesta-tittle__h3--green">Corazón Verde</h3><br>
                     <h3 class="h3 propuesta-tittle__h3">nuestra propuesta</h3>
                 </div>
-                <div class="propuesta__img-container">
+                <div class="propuesta__img-vide-container">
+                    <div class="propuesta__img-container">
                         <img class="propuesta__img" src="../public/assets/pirqa_sandwich-1.jpg" alt="sandwich pirqa">
-                        <img class="propuesta__img" src="../public/assets/veggie_clasica.jpg" alt="hamburguesa veggie clasica">
+                        <img class="propuesta__img" src="../public/assets/veggie_clasica.jpg"
+                            alt="hamburguesa veggie clasica">
                         <img class="propuesta__img" src="../public/assets/salteados.jpg" alt="tequeños salteados">
-                        <img class="propuesta__img" src="../public/assets/solterito_dequinua.jpg" alt="ensalada 'solterito de quinua'">
+                        <img class="propuesta__img" src="../public/assets/solterito_dequinua.jpg"
+                            alt="ensalada 'solterito de quinua'">
+                    </div>
+                    <div class="propuesta__video-container">
+                        <video class="propuesta__video" controls
+                            src="../public/assets/Grabación de pantalla 2021-06-02 a la(s) 18.48.10.mov">
+                        </video>
+                    </div>
                 </div>
-                <div class="propuesta__video-container"><video controls src="../public/assets/Grabación de pantalla 2021-06-02 a la(s) 18.48.10.mov"></video></div>
             </div>
         </section>
+        <!-- IMG BAR -->
         <section class="img-bar">
             <img class="img-bar__img" src="../public/assets/WEB-MAMAQ-ecofriendly.png" alt="">
             <img class="img-bar__img" src="../public/assets/WEB-MAMAQ-artesanal.png" alt="">
             <img class="img-bar__img" src="../public/assets/WEB-MAMAQ-homemade.png" alt="">
             <img class="img-bar__img" src="../public/assets/WEB-MAMAQ-petfriendly.png" alt="">
         </section>
+        <!-- BANNER DE RESERVA -->
         <section class="reserva-banner">
             <img class="reserva-banner__img" src="../public/assets/home-reservas.jpg" alt="">
             <div class="reserva-banner__info">
                 <h3 class="reserva-banner__h3">¡HAZ TU RESERVA!</h3>
                 <p class="reserva-banner__p">Recuerda que nuestro aforo es limitado</p>
-                <a class="a btn reserva-banner__a"" href="">¡Reserva aquí!</a>
+                <a class="a btn reserva-banner__a"" href=" /reservas">¡Reserva aquí!</a>
             </div>
         </section>
         <section class="contacto">
@@ -72,9 +82,9 @@
                 <input class="contacto__input contacto__input--placeholder" type="text" placeholder="Nombre" required>
                 <input class="contacto__input contacto__input--placeholder" type="text" placeholder="Asunto" required>
                 <input class="contacto__input contacto__input--placeholder" type="email" placeholder="Email" required>
-                <textarea class="contacto__input--placeholder contacto__input--textarea" placeholder="Mensaje" rows="8" required></textarea>
+                <textarea class="contacto__input--placeholder contacto__input--textarea" placeholder="Mensaje" rows="8"
+                    required></textarea>
                 <input class="contacto__submit" type="submit" value="Enviar">
             </form>
         </section>
         <%- include('templates/footer') %>
-

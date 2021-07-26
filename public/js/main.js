@@ -8,14 +8,10 @@ const apiUrl = "http://localhost:3001/api/products"
 
 document.addEventListener("DOMContentLoaded", () => {
     mobileNav()
-    // slider(),
-    // inputValidation(),
-    // responsiveMap(),
-    // getCarta(apiUrl)
     let path = window.location.pathname;
 
     switch (path) {
-        case "/inicio":
+        case "/":
             slider()
             break;
     

@@ -1,0 +1,14 @@
+@media screen and (min-width: 580px) {
+    .reserva-container {
+        flex-direction: column;
+    }
+}
+
+@media screen and (min-width: 1023px) {
+    .reserva-container {
+        flex-direction: row;
+    }
+    .reserva__mapa iframe {
+        width: 40vw;
+    }
+}

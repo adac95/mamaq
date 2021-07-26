@@ -1,4 +1,3 @@
-
 export default function slider() {
     const $prev = document.getElementById("slideArrowLBtn");
     const $next = document.getElementById("slideArrowRBtn");
