@@ -1,11 +1,15 @@
 const express = require('express')
 const products = require('../api-products/network')
-const index = require('./views')
+const users = require('../api-user/network')
+const auth = require('../api-auth/network')
+const indexFrontend = require('./views')
 
 
 const routes = (server) => {
     server.use('/api/products', products)
-    server.use('/', index)
+    server.use('/api/users', users)
+    server.use('/api/auth', auth)
+    server.use('/', indexFrontend)
     // server.use('/admin', indexhtml)
 }
 

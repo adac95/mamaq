@@ -126,6 +126,7 @@ export default function patch(table, url) {
                 
                 let res = await fetch(`${url}/${e.target.dataset._id}`, options);
                 let json = await res.json();
+                console.log(json);
                 
                 // CAMBIAR LOS INPUTS POR LOS VALORES ACTUALIZADOS
                 tr.querySelector(".item-name").textContent = e.target.dataset.name
