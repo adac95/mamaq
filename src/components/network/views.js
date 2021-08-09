@@ -3,7 +3,7 @@ const router = express.Router()
 const Model = require('../api-products/model')
 
 router.get('/', (req, res) => {
-    res.render('inicio')
+    res.render('index')
 })
 
 router.get('/reservas', (req, res) => {
