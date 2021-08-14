@@ -301,7 +301,7 @@ html {
     color: rgba(89,214,0,0.23);
     letter-spacing: 1px;
 }
-.propuesta__img-vide-container {
+.propuesta__img-video-container {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -321,13 +321,17 @@ html {
 
 .propuesta__video-container {
     display: flex;
+    width: 83%;
+    margin: auto;
     justify-content: center;
     align-items: center;
 } 
 
 .propuesta__video {
-    width: 90%;
-    max-height: 90%;
+    display: flex;
+    width: 100%;
+    min-height: 200px;
+    height: 30vh;
     margin: 10px 0;
 }
 

@@ -15,10 +15,22 @@
 
 @media screen and (min-width: 770px) {
     /* Nuestra Propuesta */
+    .propuesta__img-video-container {
+        margin: auto;
+        flex-direction: row;
+    }
     .propuesta__img-container {
-        width: 70%;
+        width: 55%;
+    }
+    .propuesta__video-container {
+        width: 40%;
         margin: auto;
     }
+    .propuesta__video {
+        height: 60vh;
+        max-height: 500px;
+    }  
+
     /* img-bar */
     .img-bar {
         margin: 2rem auto;
@@ -28,15 +40,5 @@
         min-width: none;
         max-width: none;
         width: 10vw;
-    }
-}
-
-@media screen and (min-width: 1146px) {
-    /* Nuestra Propuesta */
-    .propuesta__img-container {
-        width: 100%;
-    }
-    .propuesta__img-vide-container {
-        flex-direction: row;
     }
 }
