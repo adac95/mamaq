@@ -2,7 +2,6 @@ import getAll from './get.js'
 import post from './post.js'
 import patch from './patch.js'
 import deleteProduct from './delete-product.js'
-// import {port} from "../../../backend/config/index.js"
 
 const apiUrl = `/api/products`
 
