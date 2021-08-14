@@ -7,16 +7,17 @@ const morgan = require('morgan')
 const multer  = require('multer')
 const storage = require('./components/network/multer')
 const { createRoles, createAdmin} = require('./components/utils/initialSetup');
-
+let ejs = require('ejs');
 connectDB()
 
+// Crear roles y admins por primera vez
 createRoles();
 createAdmin();
 
 app.use(express.json())
 
 app.set('view engine', 'ejs');
-app.set('views', __dirname + '/views')
+app.set('views', path.join(__dirname, '../fronted/views'))
 
 
 app.use(morgan('dev'))
@@ -26,6 +27,6 @@ app.use(express.urlencoded({extended: false}))
 app.use(multer(storage).single('createProductImg'))
 
 router(app);
-app.use("/public", express.static(path.join(__dirname, 'public')));
+app.use("/public", express.static(path.join(__dirname, '../fronted/public')));
 
 module.exports = app

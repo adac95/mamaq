@@ -3,6 +3,8 @@ const products = require('../api-products/network')
 const users = require('../api-user/network')
 const auth = require('../api-auth/network')
 const indexFrontend = require('./views')
+// const public = require('../../public')
+// const indexFrontend = require('../../public/index.html')
 
 
 const routes = (server) => {
