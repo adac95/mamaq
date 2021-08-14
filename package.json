@@ -3,11 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "15.x"
+  },
   "scripts": {
-    "start": "node index.js",
-    "build": "webpack --mode production",
-    "dev": "nodemon backend/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node backend/index.js",
+    "build": "cross-env NODE_ENV=production npm run start ",
+    "dev": "nodemon backend/index.js"
   },
   "keywords": [],
   "author": "Andre del Alcazar Caceres <adac9525@gmail.com>",
@@ -29,6 +31,7 @@
     "@babel/plugin-transform-runtime": "^7.15.0",
     "@babel/preset-env": "^7.15.0",
     "babel-loader": "^8.2.2",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.2.0",
     "ejs-loader": "^0.5.0",
     "html-loader": "^2.1.2",
