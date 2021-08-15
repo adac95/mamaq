@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router()
 const Model = require('../api-products/model')
+const {port} = require('../../config/index')
 
 router.get('/', (req, res) => {
-    res.render('index')
+    res.render('index', { port })
 })
 
 router.get('/reservas', (req, res) => {
