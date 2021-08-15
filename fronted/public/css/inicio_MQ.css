@@ -7,6 +7,9 @@
     .home-options-figure {
         height: 60vh;
     }
+    .home-options__a {
+        bottom:3rem;
+    }
     /* Nuestra Propuesta */
     .propuesta-tittle__h3{
         font-size: 4rem;
@@ -14,6 +17,17 @@
 }
 
 @media screen and (min-width: 770px) {
+    .propuesta__img-container {
+        width: 75%;
+        margin: auto;
+    }
+    .propuesta__video {
+        height: 60vh;
+        max-height: 500px;
+    }  
+}
+
+@media screen and (min-width: 982px) {
     /* Nuestra Propuesta */
     .propuesta__img-video-container {
         margin: auto;

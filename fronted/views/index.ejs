@@ -23,7 +23,7 @@
             <div class="home-options-container">
                 <figure class="home-options-figure">
                     <img class="home-options__img home-options__img-one" src="../public/assets/WEB-MAMAQ_BOX-1.jpg">
-                    <button class="btn home-options__btn home-options__a">Pide vía whatsapp</button>
+                    <a class="a btn home-options__btn home-options__a" href="https://wa.me/51989070874" rel="noopener" target="_blank">Pide vía whatsapp</a>
                 </figure>
                 <figure class="home-options-figure">
                     <img class="home-options__img home-options__img-two" src="../public/assets/mamaq-reserva.jpg">
@@ -73,16 +73,19 @@
                 <a class="a btn reserva-banner__a"" href=" /reservas">¡Reserva aquí!</a>
             </div>
         </section>
-        <section class="contacto">
-            <form class="contacto__form" action="mailto:adac9525@gmail.com" method="post" enctype="text/plain">
+        <section class="contacto" id="contacto">
+            <form class="contacto__form" action="https://formsubmit.co/1c464ac09b5f604abd063e04aaa3d2d5" method="POST">
                 <span class="contacto__span">¡Hola!</span>
                 <h3 class="h3 contacto__h3">Escríbenos y te responderemos lo antes posible 😉</h3>
-                <input class="contacto__input contacto__input--placeholder" type="text" placeholder="Nombre" required>
-                <input class="contacto__input contacto__input--placeholder" type="text" placeholder="Asunto" required>
-                <input class="contacto__input contacto__input--placeholder" type="email" placeholder="Email" required>
-                <textarea class="contacto__input--placeholder contacto__input--textarea" placeholder="Mensaje" rows="8"
+                <input class="contacto__input contacto__input--placeholder" name="name" type="text" placeholder="Nombre" required>
+                <input class="contacto__input contacto__input--placeholder" name="subject" type="text" placeholder="Asunto" required>
+                <input class="contacto__input contacto__input--placeholder" name="email" type="email" placeholder="Email" required>
+                <textarea class="contacto__input--placeholder contacto__input--textarea" placeholder="Mensaje" name="message" rows="8"
                     required></textarea>
                 <input class="contacto__submit" type="submit" value="Enviar">
+                <input type = "hidden" name = "_subject" value = "¡Nuevo envío!"><input type="hidden" name="_captcha" value="false">
+                <input type="text" name="_honey" style="display:none">
+                <input type="hidden" name="_next" value="http://localhost:3001/#contacto">
             </form>
         </section>
         <%- include('templates/footer') %>

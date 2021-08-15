@@ -267,9 +267,10 @@ html {
     letter-spacing: 0.8px;
     color: #ebebeb;
     cursor: pointer;
-    margin-bottom: 1.3rem;
+    /* margin-bottom: 1.3rem; */
     align-self: center;
     position: absolute;
+    bottom: .8rem;
     z-index: 800;
 }
 
