@@ -85,7 +85,7 @@
                 <input class="contacto__submit" type="submit" value="Enviar">
                 <input type = "hidden" name = "_subject" value = "¡Nuevo envío!"><input type="hidden" name="_captcha" value="false">
                 <input type="text" name="_honey" style="display:none">
-                <input type="hidden" name="_next" value=<%= `http://localhost:${port}/#contacto` %>>
+                <input type="hidden" name="_next" value="<%= process.env.NODE_ENV === "production" ? `${ herokuUri }/#contacto` : "http://localhost:3001/#contacto" %>">
             </form>
         </section>
         <%- include('templates/footer') %>

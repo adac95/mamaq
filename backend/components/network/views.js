@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router()
 const Model = require('../api-products/model')
-const {port} = require('../../config/index')
+const {herokuUri} = require('../../config/index')
 
 router.get('/', (req, res) => {
-    res.render('index', { port })
+    res.render('index', { herokuUri })
 })
 
 router.get('/reservas', (req, res) => {

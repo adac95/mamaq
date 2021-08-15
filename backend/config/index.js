@@ -8,7 +8,8 @@ const config = {
     dbPassword: process.env.DB_PASSWORD,
     dbHost: process.env.DB_HOST,
     dbName: process.env.DB_NAME,
-    secretToken: process.env.SECRET_TOKEN
+    secretToken: process.env.SECRET_TOKEN,
+    herokuUri: process.env.HEROKU_URI,
 }
 
 module.exports = config
