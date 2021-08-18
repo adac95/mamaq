@@ -1,18 +1,31 @@
-import getAll from './get.js'
-import post from './post.js'
-import patch from './patch.js'
-import deleteProduct from './delete-product.js'
+import getAll from './get.mjs'
+import post from './post.mjs'
+import patch from './patch.mjs'
+import deleteProduct from './delete-product.mjs'
 
-const apiUrl = `/api/products`
+const apiUrl = `/api/products`;
+const $table = document.querySelector(".items-table");
+const $template = document.getElementById("items-template").content;
+const $fragment = document.createDocumentFragment();
 
-const d = document,
-    $table = d.querySelector(".items-table"),
-    $template = d.getElementById("items-template").content,
-    $fragment = d.createDocumentFragment();
-
-
-post(apiUrl)
-getAll(apiUrl, $table, $template, $fragment);
+document.addEventListener("DOMContentLoaded", getAll(apiUrl, $table, $template, $fragment)) 
+document.addEventListener("submit",e=> {
+    post(e,apiUrl, $table, $template, $fragment,getAll)
+} ) 
 // delete tiene que ir antes que patch porque sino al presionar cancelar patch se manda como peticion delete
-deleteProduct($table, apiUrl)
-patch($table, apiUrl)
+$table.addEventListener("click", e=> {
+    deleteProduct(e, apiUrl)
+    patch(e, apiUrl)
+})
+
+// PROBANDO... CON CLASES EN LA CARPETA DE PROBANDO 
+// import RenderProducts from './probando/Render.js'
+// const render = new RenderProducts();
+// const $form = document.getElementById("createForm");
+//     render.getProducts($table, $template, $fragment)
+//     document.addEventListener("submit", async e => {
+//         if (e.target == $form) { 
+//             e.preventDefault() 
+//             render.addProduct()
+//         }})
+            

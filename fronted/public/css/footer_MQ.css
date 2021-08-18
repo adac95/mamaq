@@ -15,11 +15,11 @@
         justify-content: space-evenly;
         flex-direction: column-reverse;
         padding: initial;
-        margin: unset;
+        margin: 1rem 0;
     }
     .footer__redes-img {
         flex-direction: column;
-        margin: unset;
+        margin: 1rem 0;
         width: 100%;
     }
     .footer__redes-p {
@@ -45,7 +45,8 @@
     .footer__logo{
         display: block;
         margin: auto;
-        width: 100px;
+        width: 150px;
+        height: 100px;
     }
     .footer-mensaje-p {
         margin-bottom: 1rem;

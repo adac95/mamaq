@@ -12,11 +12,11 @@
                         template.querySelector(".item-category").textContent = el.category;
                         template.querySelector(".item-description").textContent = el.description;
                         template.querySelector(".edit-btn").dataset._id = el._id;
-                        template.querySelector(".item-tr").dataset._id = el._id;
-                        template.querySelector(".item-tr").dataset.name = el.name;
-                        template.querySelector(".item-tr").dataset.price = el.price;
-                        template.querySelector(".item-tr").dataset.category = el.category;
-                        template.querySelector(".item-tr").dataset.description = el.description;
+                        template.querySelector(".item-tr-fetch").dataset._id = el._id;
+                        template.querySelector(".item-tr-fetch").dataset.name = el.name;
+                        template.querySelector(".item-tr-fetch").dataset.price = el.price;
+                        template.querySelector(".item-tr-fetch").dataset.category = el.category;
+                        template.querySelector(".item-tr-fetch").dataset.description = el.description;
                         template.querySelector(".delete-btn").dataset._id = el._id;
     
                         let clone = document.importNode(template, true);

@@ -3,6 +3,7 @@ const router = express.Router()
 const Model = require('../api-products/model')
 const {herokuUri} = require('../../config/index')
 
+
 router.get('/', (req, res) => {
     res.render('index', { herokuUri })
 })
@@ -15,10 +16,6 @@ router.get('/carta', async (req, res) => {
     const imgUploads = await Model.find();
     // console.log(imgUploads);
     res.render('carta', { imgUploads })
-})
-
-router.get('/create-products', (req, res) => {
-    res.render('create-products')
 })
 
 module.exports = router;

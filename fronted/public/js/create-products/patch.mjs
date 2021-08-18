@@ -1,12 +1,11 @@
 
-export default function patch(table, url) {
+export default async function patch(e, url) {
 
-    table.addEventListener("click", async e => {
         try {
             // identificar el id
             let id = e.target.dataset._id;
             // Traer todas las filas ()
-            const trs = [...document.querySelectorAll(".item-tr")];
+            const trs = [...document.querySelectorAll(".item-tr-fetch")];
             // encontrar la fila del id que necesitamos
             const tr = trs.find(el => el.dataset._id == id)
             // crear inputs para editar
@@ -148,5 +147,3 @@ export default function patch(table, url) {
         }
 
     }
-    )
-}

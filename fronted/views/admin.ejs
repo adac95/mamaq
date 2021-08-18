@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <style>
+    :root {
+      --primary-color: #2d2d2d;
+      --primary-color-opacity: #2d2d2dce;
+      --second-color: rgb(194, 191, 191);
+      --third-color: #110f0f;
+      --white-color: #ffffff;
+      --orange-color: #f90;
+      --header-color-mobile: #532429e7;
+      --font-family: 'Quicksand', sans-serif;
+    }
+
+    html {
+      font-family: var(--font-family);
+      font-size: 62.5%;
+      list-style: none;
+      overflow-x: hidden;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      margin: 0px;
+      padding: 0px;
+    }
+
+    *,
+    body {
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+    }
+
+    .a {
+      text-decoration: none;
+    }
+
+    .btn {
+      font-weight: 300;
+      font-size: 1.5rem;
+      line-height: 1.8;
+      color: #ffffff;
+      letter-spacing: .3rem;
+    }
+
+    .main {
+      max-width: 2100px;
+      margin: auto;
+    }
+
+    .form-check {
+      margin-top: .5rem;
+      margin-bottom: .6rem;
+    }
+
+    .form-switch .form-check-input {
+      height: 1.6rem;
+      width: 3.5rem;
+      margin-right: 1rem;
+    }
+
+    .form-check-input:checked {
+      background-color: #ffc107;
+      border-color: transparent;
+    }
+
+    .form-check-label {
+      padding-top: .2rem;
+    }
+
+    .forget-container {
+      text-align: center;
+      margin-top: .3rem;
+      color: #6c757d;
+    }
+
+    .header {
+      width: 100%;
+      height: 80px;
+    }
+
+    .nav {
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      background-color: var(--primary-color);
+    }
+
+    .nav__img-container {
+      height: 100%;
+    }
+
+    .nav__img {
+      height: 80px;
+    }
+
+    .nav__datos-container {
+      width: 40%;
+      height: 80%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      align-self: center;
+    }
+
+    .nav__p {
+      font-size: 1.5rem;
+      color: var(--white-color);
+      display: inline-block;
+    }
+
+    .nav__btn-logout {
+      padding: .2rem .7rem;
+      border-radius: 2rem;
+    }
+
+    /* OPTIONS YA LOGEADO */
+    .main__option {
+      display: flex;
+      width: 80%;
+      margin: 1rem auto;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .option__p {
+      font-size: 1.5rem;
+    }
+
+    .option__btn {
+      color: var(--white-color);
+      border: none;
+      border-radius: 6px;
+      font-size: 1.3rem;
+      padding: .5rem 1rem;
+    }
+  </style>
+  <title>Document</title>
+</head>
+
+<body>
+  <header class="header">
+    <nav class="nav">
+      <div class="nav__img-container">
+        <img class="nav__img" src="../public/assets/logo-blanco-1024x724.png" alt="logo mamaq navbar">
+      </div>
+      <% if(user) { %>
+        <div class="nav__datos-container">
+          <p class="p nav__p">Hola <span class="nav__p-username">
+              <%= user.username %>
+            </span></p>
+          <button class="nav__btn-logout btn-danger  nav__btn-logout">Cerrar sesión</button>
+        </div>
+        <% } %>
+    </nav>
+  </header>
+  <main class="main">
+    <% if(!user) { %>
+      <form class="container mt-5 ">
+        <div class="align-items-center container-sm fs-5">
+          <div class="form-floating mb-2">
+            <input type="email" class="form-control " id="floatingUsername" placeholder="Username">
+            <label for="floatingInput">Username</label>
+          </div>
+          <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+            <label class="form-check-label " for="flexSwitchCheckDefault">Recordarme</label>
+          </div>
+          <div class="d-grid gap-2">
+            <button class="btn btn-warning" type="submit">Iniciar sesión</button>
+          </div>
+        </div>
+      </form>
+      <div class="forget-container">
+        <p class="p forget__p">Olvidaste tus datos? <a class="a forget__a">Haz click aquí</a></p>
+      </div>
+      <% } %>
+        <div class="main__options-container">
+          <div class="main__option">
+            <p class="p option__p">Actualizar la carta</p>
+            <a href="admin/create-products" class="a option__btn btn-warning">Click aquí</a>
+          </div>
+          <div class="main__option">
+            <p class="p option__p">Crear nuevos usuarios</p>
+            <a href="/admin/create-users" class="a option__btn btn-warning">Click aquí</a>
+          </div>
+          <div class="main__option">
+            <p class="p option__p">Ir a la pagina de Mamaq</p>
+            <a href="/" class="a option__btn btn-warning">Click aquí</a>
+          </div>
+        </div>
+  </main>
+</body>
+
+</html>

@@ -462,20 +462,24 @@ html {
 }
 
 .footer__redes {
+    height: 100%;
     text-align: center;
     margin: auto;
     padding-left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items:center;
 }
 
 .footer__redes-img {
     width: 60%;
-    margin: 0.5rem auto 0;
     display: flex;
     justify-content: space-around;
 }
 .footer__a-redes {
     display: inline-block;
-    height: 3rem;
+    /* height: 3rem; */
 }
 .footer__img-nav {
     width: 1.8rem;
@@ -499,7 +503,7 @@ html {
 .header-movil{
     display:block;
     height:70px;
-    background-color: var(--header-color);
+    background-color: var(--primary-color);
 }
 .header-movil__p {
     display: none;

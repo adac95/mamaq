@@ -15,7 +15,9 @@ router.get('/', (req, res) => {
         })
 })
 
-router.post('/', [authJwt.verifyToken, authJwt.isAdmin],(req, res) => {
+router.post('/',
+ //[authJwt.verifyToken, authJwt.isAdmin],
+    (req, res) => {
     const { name, price, category, description } = req.body
     controller.addProduct(name, price, category, description, req.file)
         .then((data) => {
@@ -26,7 +28,9 @@ router.post('/', [authJwt.verifyToken, authJwt.isAdmin],(req, res) => {
         })
 })
 
-router.patch('/:id', [authJwt.verifyToken, authJwt.isAdmin], (req, res) => {
+router.patch('/:id', 
+// [authJwt.verifyToken, authJwt.isAdmin], 
+    (req, res) => {
     const {name, price, category, description } = req.body
     controller.patchProduct(req.params.id, name, price, category, description)
         .then((data) => {
@@ -37,7 +41,9 @@ router.patch('/:id', [authJwt.verifyToken, authJwt.isAdmin], (req, res) => {
         })
 })
 
-router.delete('/:id', [authJwt.verifyToken, authJwt.isAdmin], (req, res) => {
+router.delete('/:id', 
+//[authJwt.verifyToken, authJwt.isAdmin], 
+    (req, res) => {
     controller.deleteProduct(req.params.id).
         then(() => {
             response.success(req, res, 'Producto eliminado exitosamente', 200)

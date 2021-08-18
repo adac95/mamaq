@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <main>
+    <main class="main">
         <section class="create-item-section">
             <form class="create-item__form" id="createForm">
                 <label class="form__label" for="name">Nombre
@@ -20,7 +20,6 @@
                     <input class="form__input" type="number" id="price" name="price" required>
                 </label>
                 <label class="form__label" for="category">Categoria
-                    <!-- <input class="form__input" type="" id="category" required> -->
                     <select name="category" class="form__input">
                         <option class="form__input">Vegetariano</option>
                         <option class="form__input">Vegano</option>
@@ -37,10 +36,10 @@
             </form>
         </section>
         <section id="list-item-section" class="list-item-section">
-            <h2>Productos</h2>
+            <h2 class="h2 items__h2">Productos</h2>
             <table class="items-table">
                 <thead>
-                    <tr>
+                    <tr class="items__tr">
                         <th>Nombre</th>
                         <th>Precio</th>
                         <th>Categoria</th>
@@ -54,16 +53,34 @@
         </section>
     </main>
     <template id="items-template">
-        <tr class="item-tr">
-            <td class="item-name"></td>
-            <td class="item-price"></td>
-            <td class="item-category"></td>
-            <td class="item-description"></td>
-            <td class="item-image"></td>
-            <td class="td-btn">
-                <button class="edit-btn">Editar</button>
-                <button class="delete-btn">Eliminar</button>
-            </td>
+        <tr class="item-tr-fetch">
+            <span class="item-tr__span">
+                Nombre
+                <td class="item-name"></td>
+            </span>
+            <span class="item-tr__span">
+                <th>Precio</th>
+                <td class="item-price"></td>
+            </span>
+            <span class="item-tr__span">
+                <th>Categoria</th>
+                <td class="item-category"></td>
+            </span>
+            <span class="item-tr__span">
+                <th>Descripcion</th>
+                <td class="item-description"></td>
+            </span>
+            <span class="item-tr__span">
+                <th>Imagen</th>
+                <td class="item-image"></td>
+            </span>
+            <span class="item-tr__span">
+                <th>Acciones</th>
+                <td class="td-btn">
+                    <button class="edit-btn">Editar</button>
+                    <button class="delete-btn">Eliminar</button>
+                </td>
+            </span>
         </tr>
     </template>
     <script type="module" src="../public/js/create-products/main-crud.js"></script>
