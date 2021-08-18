@@ -11,6 +11,14 @@
                         template.querySelector(".item-price").textContent = el.price;
                         template.querySelector(".item-category").textContent = el.category;
                         template.querySelector(".item-description").textContent = el.description;
+                        // DANDOLE EL SRC Y ALT A LAS IMAGENES (SI ES QUE EXISTEN)
+                        if(el.imagen.path){
+                            template.querySelector(".item-image__img").src = `../${el.imagen.path}`
+                            template.querySelector(".item-image__img").alt = el.imagen.originalname;
+                        }else {
+                            template.querySelector(".item-image__img").src = ""
+                            template.querySelector(".item-image__img").alt = "sin imagen"
+                        }
                         template.querySelector(".edit-btn").dataset._id = el._id;
                         template.querySelector(".item-tr-fetch").dataset._id = el._id;
                         template.querySelector(".item-tr-fetch").dataset.name = el.name;

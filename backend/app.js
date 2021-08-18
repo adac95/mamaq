@@ -7,26 +7,27 @@ const morgan = require('morgan')
 const multer  = require('multer')
 const storage = require('./components/network/multer')
 const { createRoles, createAdmin} = require('./components/utils/initialSetup');
-let ejs = require('ejs');
+
+// BASE DE DATOS
 connectDB()
 
 // Crear roles y admins por primera vez
 createRoles();
 createAdmin();
 
-app.use(express.json())
-
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '../fronted/views'))
 
-
+// MIDDLEWARES
+app.use("/public", express.static(path.join(__dirname, '../fronted/public')));
+app.use(express.json())
 app.use(morgan('dev'))
 app.use(express.urlencoded({extended: false}))
-
 // Multer
 app.use(multer(storage).single('createProductImg'))
 
 router(app);
-app.use("/public", express.static(path.join(__dirname, '../fronted/public')));
+// SI DESEO CONMPARTIR OTRA CARPETA "STATIC" 
+// app.use('/static', express.static(path.join(__dirname, 'public')))
 
 module.exports = app

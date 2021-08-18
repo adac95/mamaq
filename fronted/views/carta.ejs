@@ -1,6 +1,7 @@
-<%- include('templates/head', {tittle: 'La carta'}) %>
+<%- include('templates/head', {tittle: 'La carta', css: '<link rel="stylesheet" href="../../public/css/carta.css">'}) %>
     <img class="carta__img" src="../public/assets/WEB-MAMAQ_CARTAheader.jpg" alt="imagen de la carta">
     <div id="cartaContainer" class="carta__template-container">
+        <!-- AQUI NO FUNCIONA EL LOADIN LAZY  -->
         <% imgUploads.forEach(img => { %>
             <img class="template-img" src="<%= img.imagen.path %>" alt="IMG">
             <span class="template-name-price">

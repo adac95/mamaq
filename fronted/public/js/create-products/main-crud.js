@@ -10,14 +10,15 @@ const $fragment = document.createDocumentFragment();
 
 
 document.addEventListener("load", getAll(apiUrl, $table, $template, $fragment)) 
-// addListener("",getAll(apiUrl, $table, $template, $fragment))
+
 document.addEventListener("submit",e=> {
     post(e,apiUrl, $table, $template, $fragment,getAll)
 } ) 
-// delete tiene que ir antes que patch porque sino al presionar cancelar patch se manda como peticion delete
+
 document.addEventListener("click", e=> {
     if(e.target.matches(".edit-btn") || e.target.matches((".delete-btn"))){
         deleteProduct(e, apiUrl)
+        // delete tiene que ir antes que patch porque sino al presionar cancelar patch se manda como peticion delete
         patch(e, apiUrl)
     }
 })

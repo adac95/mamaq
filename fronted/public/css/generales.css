@@ -1,0 +1,45 @@
+:root {
+    --primary-color:#2d2d2d;
+    --primary-color-opacity:#2d2d2dce;
+    --second-color: rgb(194, 191, 191);
+    --third-color: #110f0f;
+    --white-color: #ffffff;
+    --orange-color: #f90;
+    --header-color-mobile: #532429e7;
+    --font-family: 'Quicksand', sans-serif; 
+}
+
+html {
+    font-family: var(--font-family);
+    font-size: 62.5%;
+    list-style: none;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    margin: 0px;
+    padding: 0px;   
+}
+
+*, body {
+    margin: 0px;
+    padding: 0px;   
+    box-sizing: border-box;
+}
+
+.a {
+    text-decoration: none;
+}
+.btn {
+    outline: none;
+    border: none
+}
+
+.h3 {
+    font-size: 3rem;
+    display: inline-block;
+    height: auto;
+}
+.main {
+    max-width: 2100px;
+    margin: auto;
+}

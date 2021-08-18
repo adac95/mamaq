@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/create-products.css">
-    <title>crear productos</title>
-</head>
 
-<body>
+    <%- include('templates/adminHeader', {tittle: 'crear productos', css: ['<link rel="stylesheet" href="../public/css/create-products.css">']}) %>
     <main class="main">
         <section class="create-item-section">
             <form class="create-item__form" id="createForm">
@@ -55,7 +46,7 @@
     <template id="items-template">
         <table class="item-tr-fetch">
             <tr class="item-tr__span">
-                <th class="tr-fetch__th">nombre</th>
+                <th class="tr-fetch__th">Nombre</th>
                 <td class="item-name"></td>
             </tr>
             <tr class="item-tr__span">
@@ -72,7 +63,9 @@
             </tr>
             <tr class="item-tr__span item-tr__span--imagen">
                 <th class="tr-fetch__th">Imagen</th>
-                <td class="item-image"></td>
+                <td class="item-image">
+                    <img loading="lazy" class="item-image__img" src="" alt="">
+                </td>
             </tr>
             <tr class="item-tr__span">
                 <th class="tr-fetch__th">Acciones</th>

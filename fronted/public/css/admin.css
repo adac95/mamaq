@@ -1,0 +1,54 @@
+.btn {
+    font-weight: 300;
+    font-size: 1.5rem;
+    line-height: 1.8;
+    color: #ffffff;
+    letter-spacing: .3rem;
+  }
+
+  .form-check {
+    margin-top: .5rem;
+    margin-bottom: .6rem;
+  }
+
+  .form-switch .form-check-input {
+    height: 1.6rem;
+    width: 3.5rem;
+    margin-right: 1rem;
+  }
+
+  .form-check-input:checked {
+    background-color: #ffc107;
+    border-color: transparent;
+  }
+
+  .form-check-label {
+    padding-top: .2rem;
+  }
+
+  .forget-container {
+    text-align: center;
+    margin-top: .3rem;
+    color: #6c757d;
+  }
+
+  /* OPTIONS YA LOGEADO */
+  .main__option {
+    display: flex;
+    width: 80%;
+    margin: 1rem auto;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .option__p {
+    font-size: 1.5rem;
+  }
+
+  .option__btn {
+    color: var(--white-color);
+    border: none;
+    border-radius: 6px;
+    font-size: 1.3rem;
+    padding: .5rem 1rem;
+  }
