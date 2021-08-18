@@ -10,7 +10,8 @@ export default async function post(e, url, table, template, fragment, getAllFunc
             let res = await fetch(url, options);
             let json = await res.json();
             $form.reset()
-            getAllFunction(url, table, template, fragment)
+            location.reload();
+            // getAllFunction(url, table, template, fragment)
 
         } catch (error) {
             console.log(error)

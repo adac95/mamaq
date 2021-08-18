@@ -53,35 +53,35 @@
         </section>
     </main>
     <template id="items-template">
-        <tr class="item-tr-fetch">
-            <span class="item-tr__span">
-                Nombre
+        <table class="item-tr-fetch">
+            <tr class="item-tr__span">
+                <th class="tr-fetch__th">nombre</th>
                 <td class="item-name"></td>
-            </span>
-            <span class="item-tr__span">
-                <th>Precio</th>
+            </tr>
+            <tr class="item-tr__span">
+                <th class="tr-fetch__th">Precio</th>
                 <td class="item-price"></td>
-            </span>
-            <span class="item-tr__span">
-                <th>Categoria</th>
+            </tr>
+            <tr class="item-tr__span">
+                <th class="tr-fetch__th">Categoria</th>
                 <td class="item-category"></td>
-            </span>
-            <span class="item-tr__span">
-                <th>Descripcion</th>
+            </tr>
+            <tr class="item-tr__span item-tr__span--description">
+                <th class="tr-fetch__th">Descripcion</th>
                 <td class="item-description"></td>
-            </span>
-            <span class="item-tr__span">
-                <th>Imagen</th>
+            </tr>
+            <tr class="item-tr__span item-tr__span--imagen">
+                <th class="tr-fetch__th">Imagen</th>
                 <td class="item-image"></td>
-            </span>
-            <span class="item-tr__span">
-                <th>Acciones</th>
+            </tr>
+            <tr class="item-tr__span">
+                <th class="tr-fetch__th">Acciones</th>
                 <td class="td-btn">
-                    <button class="edit-btn">Editar</button>
-                    <button class="delete-btn">Eliminar</button>
+                    <button class="btn item-tr__btn edit-btn">Editar</button>
+                    <button class="btn item-tr__btn delete-btn">Eliminar</button>
                 </td>
-            </span>
-        </tr>
+            </tr>
+        </table>
     </template>
     <script type="module" src="../public/js/create-products/main-crud.js"></script>
 </body>

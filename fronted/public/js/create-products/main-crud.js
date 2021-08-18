@@ -8,14 +8,18 @@ const $table = document.querySelector(".items-table");
 const $template = document.getElementById("items-template").content;
 const $fragment = document.createDocumentFragment();
 
-document.addEventListener("DOMContentLoaded", getAll(apiUrl, $table, $template, $fragment)) 
+
+document.addEventListener("load", getAll(apiUrl, $table, $template, $fragment)) 
+// addListener("",getAll(apiUrl, $table, $template, $fragment))
 document.addEventListener("submit",e=> {
     post(e,apiUrl, $table, $template, $fragment,getAll)
 } ) 
 // delete tiene que ir antes que patch porque sino al presionar cancelar patch se manda como peticion delete
-$table.addEventListener("click", e=> {
-    deleteProduct(e, apiUrl)
-    patch(e, apiUrl)
+document.addEventListener("click", e=> {
+    if(e.target.matches(".edit-btn") || e.target.matches((".delete-btn"))){
+        deleteProduct(e, apiUrl)
+        patch(e, apiUrl)
+    }
 })
 
 // PROBANDO... CON CLASES EN LA CARPETA DE PROBANDO 
