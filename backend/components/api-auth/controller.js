@@ -78,7 +78,7 @@ async function signIn(username, password) {
             return message;
         }
         // verificar si existe usuario
-        const foundUser = await store.signIn(username, password);
+        const foundUser = await store.signIn(username);
         if (!foundUser) {
             message = "No se encontro al usuario";
             return message;
@@ -86,11 +86,11 @@ async function signIn(username, password) {
         // verificando el password
         const matchPassword = await UserModel.comparePassword(password, foundUser.password);
         if (!matchPassword) {
-            message = "Invalid Password";
+            message = "Sin Permisos";
             return message;
         };
         //  Si todo esta bien creamos y devolvemos el token
-        const token = jwt.sign({ id: foundUser._id }, config.secretToken, {
+        const token = jwt.sign({ id: foundUser._id, username: foundUser.username }, config.secretToken, {
             expiresIn: 86400, // 24 hours
         });
         return token;
