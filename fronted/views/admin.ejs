@@ -2,14 +2,14 @@
 
   <main class="main">
     <% if(!user) { %>
-      <form class="container mt-5 ">
+      <form action="../api/auth/sign-in" method="POST" class="container mt-5 ">
         <div class="align-items-center container-sm fs-5">
           <div class="form-floating mb-2">
-            <input type="email" class="form-control " id="floatingUsername" placeholder="Username">
+            <input name="username" type="text" class="form-control " id="floatingUsername" placeholder="Username">
             <label for="floatingInput">Username</label>
           </div>
           <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
             <label for="floatingPassword">Password</label>
           </div>
           <div class="form-check form-switch">
@@ -24,7 +24,7 @@
       <div class="forget-container">
         <p class="p forget__p">Olvidaste tus datos? <a class="a forget__a">Haz click aquí</a></p>
       </div>
-      <% } %>
+      <% }else {%>
         <div class="main__options-container">
           <div class="main__option">
             <p class="p option__p">Actualizar la carta</p>
@@ -39,6 +39,8 @@
             <a href="/" class="a option__btn btn-warning">Click aquí</a>
           </div>
         </div>
+        <% } %>
+         
   </main>
   </body>
 

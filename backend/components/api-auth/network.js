@@ -21,6 +21,7 @@ router.post('/sign-up', (req, res) => {
 
 // SIGNIN 
 router.post('/sign-in', (req, res) => {
+  console.log(req.body)
     const { username, password } = req.body;
     controller.signIn(username, password)
         .then((token) => response.success(req, res, token, 200))

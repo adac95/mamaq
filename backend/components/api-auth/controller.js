@@ -1,6 +1,6 @@
 const store = require('./store');
-const UserModel = require('../api-user/user-model');
-const Role = require('../api-user/role-model')
+const UserModel = require('../ models/Users');
+const Role = require('../ models/Roles')
 const config = require('../../config/index')
 const jwt = require('jsonwebtoken')
 
