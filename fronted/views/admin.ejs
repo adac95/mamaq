@@ -1,8 +1,8 @@
-<%- include('templates/adminHeader', {tittle: 'admin dashboard', css: '<link rel="stylesheet" href="../public/css/admin.css">'}) %>
+<%- include('templates/admin/adminHeader', {tittle: 'admin dashboard', css: '<link rel="stylesheet" href="../public/css/admin.css">'}) %>
 
   <main class="main">
     <% if(!user) { %>
-      <form action="../api/auth/sign-in" method="POST" class="container mt-5 ">
+      <form class="container mt-5 " id="signinForm">
         <div class="align-items-center container-sm fs-5">
           <div class="form-floating mb-2">
             <input name="username" type="text" class="form-control " id="floatingUsername" placeholder="Username">
@@ -17,7 +17,7 @@
             <label class="form-check-label " for="flexSwitchCheckDefault">Recordarme</label>
           </div>
           <div class="d-grid gap-2">
-            <button class="btn btn-warning" type="submit">Iniciar sesión</button>
+            <button id="signinBtn" class="btn btn-warning" type="submit">Iniciar sesión</button>
           </div>
         </div>
       </form>
@@ -28,7 +28,7 @@
         <div class="main__options-container">
           <div class="main__option">
             <p class="p option__p">Actualizar la carta</p>
-            <a href="admin/create-products" class="a option__btn btn-warning">Click aquí</a>
+            <a href="/admin/create-products" id="goToCreateProductsLink"  class="a option__btn btn-warning">Click aquí</a>
           </div>
           <div class="main__option">
             <p class="p option__p">Crear nuevos usuarios</p>
@@ -40,8 +40,5 @@
           </div>
         </div>
         <% } %>
-         
-  </main>
-  </body>
-
-  </html>
+       
+        <%- include('templates/admin/footer') %>

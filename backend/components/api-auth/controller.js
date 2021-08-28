@@ -1,6 +1,6 @@
 const store = require('./store');
-const UserModel = require('../ models/Users');
-const Role = require('../ models/Roles')
+const UserModel = require('../models/Users');
+const Role = require('../models/Roles')
 const config = require('../../config/index')
 const jwt = require('jsonwebtoken')
 
@@ -38,19 +38,13 @@ async function signUp(username, email, password, roles) {
             const role = await Role.roleModel.findOne({ name: "user" });
             roles = role._id;
         }
-        //  else {
-        //     const foundRoles = await Role.roleModel.find({ name: { $in: roles } });
-        //     roles = foundRoles.map((role) => role._id);
-        //     // console.log(foundRoles);
-        //     console.log(roles);
-        // }
         // Hash de password
-        const hashPassword = await UserModel.encryptPassword(password);
+
         // Actualizar los nuevos datos para enviar a la BD
         const newUser = {
             username,
             email,
-            password: hashPassword,
+            password,
             roles,
         }
         // Guarandando usuario en la BD
@@ -84,7 +78,7 @@ async function signIn(username, password) {
             return message;
         }
         // verificando el password
-        const matchPassword = await UserModel.comparePassword(password, foundUser.password);
+        const matchPassword = await UserModel.comparePassword(password);
         if (!matchPassword) {
             message = "Sin Permisos";
             return message;

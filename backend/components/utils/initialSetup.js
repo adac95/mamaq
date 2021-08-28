@@ -1,5 +1,5 @@
-const Role = require('../api-user/role-model');
-const User = require('../api-user/user-model');
+const Role = require('../models/Roles');
+const User = require('../models/Users');
 
 const bcrypt = require('bcryptjs');
 

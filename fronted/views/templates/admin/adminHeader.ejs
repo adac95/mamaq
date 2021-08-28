@@ -25,7 +25,7 @@
     <header class="header">
         <nav class="nav">
             <div class="nav__img-container">
-                <img class="nav__img" src="../public/assets/logo-blanco-1024x724.png" alt="logo mamaq navbar">
+                <a class="a" href="/admin"><img class="nav__img" src="../public/assets/logo-blanco-1024x724.png" alt="logo mamaq navbar"></a>
             </div>
                 <% if(user) { %>
                     <div class="nav__datos-container">
@@ -83,7 +83,7 @@
                             </g>
                             </svg>
                         </a> -->
-                        <button class="nav__btn-logout btn-danger  nav__btn-logout">Cerrar sesión</button>
+                        <a href="../api/auth/logout" id="logoutBtn" class="a nav__btn-logout btn-danger  nav__btn-logout">Cerrar sesión</a> 
                     </div>
                     <% } %>
 

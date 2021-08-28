@@ -1,4 +1,4 @@
-export default async function deleteProduct(e, url) {
+export default async function deleteProduct(e, url, token) {
     try {
         // ENCONTRANDO EL ID DEL PRODUCTO PRESIONADO
         const id = e.target.dataset._id
@@ -15,7 +15,6 @@ export default async function deleteProduct(e, url) {
 
         if (e.target.textContent === "Eliminar") {
             $td.appendChild($div)
-            console.log(e.target)
             e.target.textContent = "No Eliminar"
             $td.querySelector(".edit-btn").textContent = "Sí Eliminar"
 
@@ -30,7 +29,8 @@ export default async function deleteProduct(e, url) {
             let options = {
                 method: "DELETE",
                 headers: {
-                    "Content-type": "application/json; charset=utf-8"
+                    "Content-type": "application/json; charset=utf-8",
+                    "x-access-token": token
                 }
             };
             let res = await fetch(`${url}/${e.target.dataset._id}`, options);

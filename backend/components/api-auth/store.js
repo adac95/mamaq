@@ -1,4 +1,4 @@
-const UserModel = require('../ models/Users')
+const UserModel = require('../models/Users')
 
 async function signUp(data) {
     const newUser = await new UserModel(data);

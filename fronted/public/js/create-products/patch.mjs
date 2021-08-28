@@ -1,5 +1,5 @@
 
-export default async function patch(e, url) {
+export default async function patch(e, url, token) {
     try {
         // identificar el id
         let id = e.target.dataset._id;
@@ -114,7 +114,8 @@ export default async function patch(e, url) {
             let options = {
                 method: "PATCH",
                 headers: {
-                    "Content-type": "application/json; charset=utf-8"
+                    "Content-type": "application/json; charset=utf-8",
+                    "x-access-token": token
                 },
                 body: JSON.stringify({
                     name: e.target.dataset.name,

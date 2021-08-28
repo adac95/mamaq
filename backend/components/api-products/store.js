@@ -1,4 +1,4 @@
-const Model = require('./model')
+const Model = require('../models/Products')
 const { unlink } = require('fs-extra');
 const path = require('path');
 

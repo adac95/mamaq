@@ -16,7 +16,9 @@ router.get('/:id', [authJwt.verifyToken, authJwt.isAdmin], (req, res) => {
         .catch(error => response.error(req, res, "Error al buscar usuario", 500, error))
 })
 
-router.post('/', [authJwt.verifyToken, authJwt.isAdmin], (req, res) => {
+router.post('/', 
+// [authJwt.verifyToken, authJwt.isAdmin], 
+(req, res) => {
     const { username, email, password, roles } = req.body;
     controller.addUser(username, email, password, roles)
         .then(newUser => response.success(req, res, newUser, 200))
