@@ -1,8 +1,8 @@
 const store = require('./store');
-const UserModel = require('./user-model');
-const Role = require('./role-model')
+const UserModel = require('../models/Users');
+const Role = require('../models/Roles')
 
-async function getAllUsers(res) {
+async function getAllUsers() {
     const users = await store.getUsers();
     return users
 }
@@ -14,6 +14,7 @@ async function getAUser(id) {
 
 async function deleteUser(id) {
     const user = await store.deleteUser(id);
+    return user
 }
 
 async function addUser(username, email, password, roles) {
@@ -59,9 +60,6 @@ async function addUser(username, email, password, roles) {
             password,
             roles: rolesFound.map((role) => role._id),
         });
-
-        // encriptando password
-        newUser.password = await UserModel.encryptPassword(password);
 
         // Guardando nuevo usuario
         const savedUser = await newUser.save()

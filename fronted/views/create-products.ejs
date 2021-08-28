@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/create-products.css">
-    <title>crear productos</title>
-</head>
 
-<body>
+    <%- include('templates/admin/adminHeader', {tittle: 'crear productos', css: ['<link rel="stylesheet" href="../public/css/create-products.css">']}) %>
     <main class="main">
         <section class="create-item-section">
             <form class="create-item__form" id="createForm">
@@ -51,39 +42,37 @@
                 <tbody></tbody>
             </table>
         </section>
-    </main>
-    <template id="items-template">
-        <tr class="item-tr-fetch">
-            <span class="item-tr__span">
-                Nombre
-                <td class="item-name"></td>
-            </span>
-            <span class="item-tr__span">
-                <th>Precio</th>
-                <td class="item-price"></td>
-            </span>
-            <span class="item-tr__span">
-                <th>Categoria</th>
-                <td class="item-category"></td>
-            </span>
-            <span class="item-tr__span">
-                <th>Descripcion</th>
-                <td class="item-description"></td>
-            </span>
-            <span class="item-tr__span">
-                <th>Imagen</th>
-                <td class="item-image"></td>
-            </span>
-            <span class="item-tr__span">
-                <th>Acciones</th>
-                <td class="td-btn">
-                    <button class="edit-btn">Editar</button>
-                    <button class="delete-btn">Eliminar</button>
-                </td>
-            </span>
-        </tr>
-    </template>
-    <script type="module" src="../public/js/create-products/main-crud.js"></script>
-</body>
-
-</html>
+        <template id="items-template">
+            <table class="item-tr-fetch">
+                <tr class="item-tr__span">
+                    <th class="tr-fetch__th">Nombre</th>
+                    <td class="item-name"></td>
+                </tr>
+                <tr class="item-tr__span">
+                    <th class="tr-fetch__th">Precio</th>
+                    <td class="item-price"></td>
+                </tr>
+                <tr class="item-tr__span">
+                    <th class="tr-fetch__th">Categoria</th>
+                    <td class="item-category"></td>
+                </tr>
+                <tr class="item-tr__span item-tr__span--description">
+                    <th class="tr-fetch__th">Descripcion</th>
+                    <td class="item-description"></td>
+                </tr>
+                <tr class="item-tr__span item-tr__span--imagen">
+                    <th class="tr-fetch__th">Imagen</th>
+                    <td class="item-image">
+                        <img loading="lazy" class="item-image__img" src="" alt="">
+                    </td>
+                </tr>
+                <tr class="item-tr__span">
+                    <th class="tr-fetch__th">Acciones</th>
+                    <td class="td-btn">
+                        <button class="btn item-tr__btn edit-btn">Editar</button>
+                        <button class="btn item-tr__btn delete-btn">Eliminar</button>
+                    </td>
+                </tr>
+            </table>
+        </template>
+<%- include('templates/admin/footer') %>

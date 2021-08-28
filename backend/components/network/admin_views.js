@@ -1,15 +1,24 @@
 const express = require('express');
 const router = express.Router()
-const UserModel = require('../../../backend/components/api-user/user-model')
+const authJwt = require('../middlewares/auth')
+const passport = require('passport')
 
-router.get('/', async (req, res) => {
-    req.body.id = "610624e4489b2a24bf89101f"
-    const user = await UserModel.findById(req.body.id)
-    console.log(user)
-    res.render('admin', { user })
+router.get('/',(req, res) => {
+    // const token =  req.headers["x-access-token"]
+    // req.session.token = token
+    // console.log("admin",token, req.session.token, req.session.user);
+    // console.log(req.session.user);
+    // res.cookie("token", token)
+    res.render('admin')
+    // req.session.token = req.headers["x-access-token"]
 })
-router.get('/create-products', (req, res) => {
+router.get('/create-products',
+authJwt.isAuthenticated
+// passport.authenticate('jwt', { session: true })
+// authJwt.verifyToken 
+,async (req, res) => {
     res.render('create-products')
+    
 })
 
 module.exports = router;

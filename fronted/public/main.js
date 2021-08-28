@@ -2,9 +2,10 @@ import mobileNav from "./js/index/mobile-nav.js";
 import slider from "./js/index/slider.js";
 import inputValidation from "./js/reservas/input-validation.js";
 import responsiveMap from "./js/reservas/responsive-map.js"
+import crud from "./js/create-products/main-crud.js";
+import signin from "./js/admin/signin.js"
+import goToCreateProductsLink from "./js/admin/goToCreateProductsLink.js";
 
-
-const apiUrl = `/api/products`
 
 document.addEventListener("DOMContentLoaded", () => {
     mobileNav()
@@ -14,15 +15,20 @@ document.addEventListener("DOMContentLoaded", () => {
         case "/":
             slider()
             break;
-    
+
         case "/reservas":
-            inputValidation(),
+            inputValidation()
             responsiveMap()
             break;
 
-        // case "/carta":
-        //     getCarta(apiUrl)
-        //     break;
+        case "/admin":
+            signin()
+            // goToCreateProductsLink()
+            break;
+
+        case "/admin/create-products":
+            crud()
+            break;
     }
 
 })

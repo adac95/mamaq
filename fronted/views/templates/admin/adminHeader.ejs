@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= tittle %>
+    </title>
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;600;700&display=swap" rel="stylesheet">
+    <!-- BOOSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../public/css/generales.css">
+    <link rel="stylesheet" href="../../public/css/adminHeader.css">
+    <%- css %> 
+</head>
+
+<body class="body">
+    <header class="header">
+        <nav class="nav">
+            <div class="nav__img-container">
+                <a class="a" href="/admin"><img class="nav__img" src="../public/assets/logo-blanco-1024x724.png" alt="logo mamaq navbar"></a>
+            </div>
+                <% if(user) { %>
+                    <div class="nav__datos-container">
+                        <p class="p nav__p">Hola <span class="nav__p-username"> 
+                                <%= user.username %>
+                            </span>
+                        </p>
+                        <!-- <a class="a nav__home" href="/admin"><?xml version="1.0" encoding="iso-8859-1"?>
+                            <svg class="nav-home__svg" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                            <g>
+                                <g>
+                                    <path d="M421.936,211.786v238.533h-90.064V347.155c0-9.045-7.331-16.375-16.375-16.375H200.324
+                                        c-9.045,0-16.375,7.331-16.375,16.375v103.164H94.431V211.786H61.681v254.908c0,9.045,7.331,16.375,16.375,16.375h122.269
+                                        c9.045,0,16.375-7.331,16.375-16.375V363.531h82.422v103.164c0,9.045,7.331,16.375,16.375,16.375h122.815
+                                        c9.045,0,16.375-7.331,16.375-16.375V211.786H421.936z"/>
+                                </g>
+                            </g>
+                            <g>
+                                <g>
+                                    <path d="M506.815,255.508L269.373,33.351c-6.25-5.857-15.966-5.895-22.27-0.104L5.295,255.405
+                                        c-6.659,6.119-7.096,16.474-0.977,23.133c3.226,3.521,7.636,5.3,12.063,5.3c3.957,0,7.931-1.43,11.075-4.318L258.085,67.635
+                                        l226.355,211.787c6.616,6.184,16.965,5.83,23.144-0.77C513.758,272.047,513.419,261.687,506.815,255.508z"/>
+                                </g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            </svg>
+                        </a> -->
+                        <a href="../api/auth/logout" id="logoutBtn" class="a nav__btn-logout btn-danger  nav__btn-logout">Cerrar sesión</a> 
+                    </div>
+                    <% } %>
+
+           
+        </nav>
+    </header>

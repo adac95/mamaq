@@ -1,4 +1,11 @@
 :root {
+    --primary-color:#2d2d2d;
+    --primary-color-opacity:#2d2d2dce;
+    --second-color: rgb(194, 191, 191);
+    --third-color: #110f0f;
+    --white-color: #ffffff;
+    --orange-color: #f90;
+    --header-color-mobile: #532429e7;
     --font-family: 'Quicksand', sans-serif; 
 }
 
@@ -25,6 +32,18 @@ html {
 .btn {
     outline: none;
     border: none
+}
+.main {
+    max-width: 2100px;
+    margin: auto;
+}
+
+/* INCIO CSS PARTICULAR */
+.body {
+    /* background-color: rgba(248, 230, 230, 0.342); */
+    width: 100%;
+    height: 100%;
+    display:block;
 }
 
 /* FORMULARIO PARA CREAR ITEMS  */
@@ -57,7 +76,7 @@ html {
     background-color: #ffc107;
 }
 
-/* LISTA DE PRODUCTOS RENDERIZADOS */
+/* LISTA DE PRODUCTOS ENCABEZADO */
 .list-item-section{
     height: 70vh;
 }
@@ -70,21 +89,71 @@ html {
 .items-table {
     display: block;
     height: 100%;
-    border: solid 1px red;
     overflow-y: auto;
 }
 .items__tr{
     display:none;
 }
+
+/* PRODUCTOS RENDERIZADOS DE LA BD */
 .item-tr-fetch {
-    display: flex;
-    flex-direction: column;
-}
-.item-tr__span {
+    border: solid 1px #ffc107;
+    border-radius: 10px;
+    /* background: hsl(45, 73%, 88%); */
     width: 100%;
-    height: 100%;
+    margin: .5rem 0;
+    font-size: 1.5rem;
+}
+
+.item-tr__span{
     display: flex;
+
+    justify-content: space-between;
+    margin: 1rem .5rem;
+}
+
+.item-tr__span--description {
+    flex-direction: column;
     align-items: flex-start;
-    flex-direction: row;
-    /* flex-direction: column; */
+}
+
+.item-image__img{
+    display: block;
+    width: 100px;
+    height: 100px;
+    /* background-color: aqua; */
+}
+
+.item-tr__btn {
+    padding: .6rem 1.8rem;
+    color: var(--white-color);
+    border-radius: 6px;
+}
+
+.edit-btn {
+    background-color: #148b04;
+}
+.delete-btn {
+    background-color: #ca0d0d;
+}
+.item-tr__btn:hover{
+    border-bottom: 1px solid black;
+    cursor: pointer;
+}
+.edit-btn:hover {
+    background-color: #2baf53;
+}
+.delete-btn:hover {
+    background-color: #f51818;
+}
+
+/* MENSAJE DE ERROR CON JS AL ELIMINAR */
+
+.delete-warningMessage {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: .2rem;
+    font-weight: 600;
+    /* border: solid 1px red; */
+    
 }
