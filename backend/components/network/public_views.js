@@ -6,9 +6,7 @@ const UserModel = require('../models/Users')
 
 
 router.get('/', async (req, res) => {
-
-    const user = await UserModel.findById(req.body.id)
-    res.render('index', { herokuUri, user })
+    res.render('index', { herokuUri })
 })
 
 router.get('/reservas', (req, res) => {

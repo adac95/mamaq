@@ -1,4 +1,8 @@
 require('dotenv').config();
+const USER = encodeURIComponent(process.env.DB_USER)
+const PASSWORD = encodeURIComponent(process.env.DB_PASSWORD)
+const DB_NAME = process.env.DB_NAME
+const MONGO_URI = `mongodb+srv://${USER}:${PASSWORD}@cluster0.pnsvs.mongodb.net/${DB_NAME}?retryWrites=true&w=majority` 
 
 const config = {
     dev: process.env.NODE_ENV !== 'production',
@@ -8,8 +12,11 @@ const config = {
     dbPassword: process.env.DB_PASSWORD,
     dbHost: process.env.DB_HOST,
     dbName: process.env.DB_NAME,
-    secretToken: process.env.SECRET_TOKEN,
+    dbUri: MONGO_URI,
     herokuUri: process.env.HEROKU_URI,
+    secretToken: process.env.SECRET_TOKEN,
+    expireTimeCookieToken: process.env.EXPIRE_TIME_COOKIE_TOKEN,
+    expressSessionSecret: process.env.EXPRESS_SESSION_SECRET,
 }
 
 module.exports = config

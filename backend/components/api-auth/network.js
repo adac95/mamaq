@@ -20,7 +20,7 @@ router.post('/sign-in', passport.authenticate('local', { failureRedirect: '/' })
   const user = {...req.user}
   const payload = await { id: req.user._id, username: req.user.username, email: req.user.email }
   const token = await jwt.sign(payload, config.secretToken, {
-    expiresIn: 86400, // 24 hours
+    expiresIn: config.expireTimeCookieToken,
   });
   res.cookie("token", token, {
     httpOnly: !config.dev,
