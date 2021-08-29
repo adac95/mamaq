@@ -9,7 +9,6 @@ const storage = require('./components/network/multer')
 const { createRoles, createAdmin } = require('./components/utils/initialSetup');
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
-const flash = require('connect-flash')
 const MongoStore = require('connect-mongo');
 const config = require('./config/index')
 const cookieSession = require('cookie-session')
@@ -50,7 +49,6 @@ app.use(session({
     cookie: { maxAge: 60000 },
     // store: MongoStore.create({ mongoUrl: MONGO_URI })
 }))
-// app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 // app.use(cookieSession({
@@ -68,7 +66,5 @@ app.use((req, res, next) => {
 // ROUTES
 router(app);
 
-// SI DESEO CONMPARTIR OTRA CARPETA "STATIC" 
-// app.use('/static', express.static(path.join(__dirname, 'public')))
 
 module.exports = app
