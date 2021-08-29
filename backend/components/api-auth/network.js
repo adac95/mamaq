@@ -17,10 +17,10 @@ router.post('/sign-up', (req, res) => {
 
 // SIGNIN 
 router.post('/sign-in', passport.authenticate('local', { failureRedirect: '/' }), async function (req, res) {
-  const user = {...req.user}
+  const user = req.user
   const payload = await { id: req.user._id, username: req.user.username, email: req.user.email }
   const token = await jwt.sign(payload, config.secretToken, {
-    expiresIn: config.expireTimeCookieToken,
+    expiresIn: 300000,
   });
   res.cookie("token", token, {
     httpOnly: !config.dev,

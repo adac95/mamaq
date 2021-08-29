@@ -1,8 +1,8 @@
 require('dotenv').config();
 const USER = encodeURIComponent(process.env.DB_USER)
 const PASSWORD = encodeURIComponent(process.env.DB_PASSWORD)
-const DB_NAME = process.env.DB_NAME
-const MONGO_URI = `mongodb+srv://${USER}:${PASSWORD}@cluster0.pnsvs.mongodb.net/${DB_NAME}?retryWrites=true&w=majority` 
+const DBNAME = process.env.DB_NAME
+const MONGO_URI = `mongodb+srv://${USER}:${PASSWORD}@cluster0.pnsvs.mongodb.net/${DBNAME}?retryWrites=true&w=majority` 
 
 const config = {
     dev: process.env.NODE_ENV !== 'production',
