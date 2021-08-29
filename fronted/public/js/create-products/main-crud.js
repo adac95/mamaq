@@ -11,8 +11,19 @@ export default function crud() {
     const $fragment = document.createDocumentFragment();
 
     // TOKEN
-    const token = localStorage.getItem("token")
-    
+    function check_cookie_name(token) {
+        const match = document.cookie.match(new RegExp('(^| )' + token + '=([^;]+)'));
+        if (match) {
+            console.log(match[2]);
+            let token = match[2]
+            return token
+        }
+        else {
+            console.log('error al recuperar el token');
+        }
+    }
+    const token = check_cookie_name("token");
+
     document.addEventListener("load", getAll(apiUrl, $table, $template, $fragment))
 
     document.addEventListener("submit", e => {

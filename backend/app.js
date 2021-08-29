@@ -11,7 +11,6 @@ const session = require('express-session')
 const cookieParser = require('cookie-parser')
 const MongoStore = require('connect-mongo');
 const config = require('./config/index')
-const cookieSession = require('cookie-session')
 const passport = require('passport')
 
 // localstrategy Passport
@@ -46,17 +45,15 @@ app.use(session({
     secret: 'keyboard cat',
     resave: true,
     saveUninitialized: true,
-    cookie: { maxAge: 60000 },
+    cookie: {
+        maxAge: 60000,
+        httpOnly: !config.dev,
+        secure: !config.dev
+    },
     // store: MongoStore.create({ mongoUrl: MONGO_URI })
 }))
 app.use(passport.initialize());
 app.use(passport.session());
-// app.use(cookieSession({
-//     name: 'session',
-//     keys: ['key1', 'key2'],
-//     // Cookie Options
-//     maxAge: 24 * 60 * 60 * 1000 // 24 hours
-//   }))
 // Variables locales
 app.use((req, res, next) => {
     app.locals.user = req.user

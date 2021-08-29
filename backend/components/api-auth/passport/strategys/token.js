@@ -7,8 +7,6 @@ const User = require('../../../models/Users')
 const opts = {}
 opts.jwtFromRequest = ExtractJwt.fromHeader("x-access-token");
 opts.secretOrKey = config.secretToken;
-// opts.issuer = 'accounts.examplesoft.com';
-// opts.audience = 'yoursite.net';
 passport.use(new JwtStrategy(opts, function (jwt_payload, done) {
     User.findOne({ id: jwt_payload.sub }, function (err, user) {
         if (err) {

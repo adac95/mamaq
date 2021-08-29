@@ -1,8 +1,6 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('../../../models/Users')
-const jwt = require('jsonwebtoken')
-const config = require('../../../../config/index')
 
 passport.use(new LocalStrategy(
     async function (username, password, done) {
