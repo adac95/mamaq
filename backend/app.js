@@ -36,21 +36,16 @@ app.use(morgan('dev'))
 app.use(multer(storage).single('createProductImg'))
 app.use(cookieParser())
 // Express Session
-const USER = encodeURIComponent(config.dbUser)
-const PASSWORD = encodeURIComponent(config.dbPassword)
-const DB_NAME = config.dbName
-const MONGO_URI = `mongodb+srv://${USER}:${PASSWORD}@cluster0.pnsvs.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`
-app.set('trust proxy', 1)
 app.use(session({
-    secret: 'keyboard cat',
+    secret: config.expressSessionSecret,
     resave: true,
     saveUninitialized: true,
     cookie: {
-        maxAge: 60000,
+        maxAge: 300000,
         httpOnly: !config.dev,
         secure: !config.dev
     },
-    // store: MongoStore.create({ mongoUrl: MONGO_URI })
+    store: MongoStore.create({ mongoUrl: config.dbUri })
 }))
 app.use(passport.initialize());
 app.use(passport.session());

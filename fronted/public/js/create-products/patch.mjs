@@ -107,8 +107,7 @@ export default async function patch(e, url, token) {
                     e.target.disabled = false;
                     $divMessage.textContent = ""
                 })
-
-                return false
+                return
             }
             // MANDAR PETICION
             let options = {
