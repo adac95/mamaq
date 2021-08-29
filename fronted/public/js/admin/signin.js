@@ -9,29 +9,11 @@ export default function signin() {
                 body: formData
             }
             let res = await fetch("../api/auth/sign-in", options)
-            let json = await res.json();
-
-            
-            const token = json.body
-            await localStorage.setItem("token", token)
-            await location.reload();
+            location.reload();
             
         } catch (error) {  
             console.log(error);
         }
-
+    
     })
-    // document.addEventListener("click", async ()=> {
-    //     try {
-    //         let token = localStorage.getItem("token")
-    //         const newOptions = {
-    //             method: "GET",
-    //             headers: { "x-access-token": token }
-    //         }
-    //         await fetch("/admin", newOptions)
-    //     } catch (error) {
-            
-    //     }
-
-    // })
 }

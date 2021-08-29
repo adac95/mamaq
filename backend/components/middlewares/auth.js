@@ -1,26 +1,6 @@
-const jwt = require('jsonwebtoken')
-const config = require('../../config/index')
 const RoleModel = require('../models/Roles')
 const UserModel = require('../models/Users')
 
-const verifyToken = async (req, res, next) => {
-    try {
-
-        // let token = req.headers["x-access-token"];
-        // req.session.token = token
-        // console.log("auth", token, req.session.user);
-
-        if (!token) return res.status(403).json({ message: "No token provided", token });
-
-        const decoded = await jwt.verify(token, config.secretToken);
-        req.userId = decoded.id;
-        const user = await UserModel.findById(req.userId, { password: 0 });
-        if (!user) return res.status(404).json({ message: "No user found" });
-        next();
-    } catch (error) {
-        return res.status(401).json({ message: "Unauthorized!" });
-    }
-};
 
 const isAuthenticated = (req, res, next) => {
     if (req.isAuthenticated()) {

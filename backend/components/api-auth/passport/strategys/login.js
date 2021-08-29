@@ -1,8 +1,6 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('../../../models/Users')
-const jwt = require('jsonwebtoken')
-const config = require('../../../../config/index')
 
 passport.use(new LocalStrategy(
     async function (username, password, done) {
@@ -14,7 +12,8 @@ passport.use(new LocalStrategy(
             if (!user.comparePassword(password)) {
                 return done(null, false, { message: 'Incorrect password.' });
             }
-            return done(null, user);
+            const userNopass =await User.findById(user._id, {password: 0})
+            return done(null, userNopass);
         });
     }
 ));
