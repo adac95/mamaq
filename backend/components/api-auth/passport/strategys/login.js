@@ -14,7 +14,8 @@ passport.use(new LocalStrategy(
             if (!user.comparePassword(password)) {
                 return done(null, false, { message: 'Incorrect password.' });
             }
-            return done(null, user);
+            const userNopass =await User.findById(user._id, {password: 0})
+            return done(null, userNopass);
         });
     }
 ));
