@@ -4,33 +4,26 @@ import patch from './patch.mjs'
 import deleteProduct from './delete-product.mjs'
 
 
-export default function crud() {
+export default async function crud() {
     const apiUrl = `/api/products`;
     const $table = document.querySelector(".items-table");
     const $template = document.getElementById("items-template").content;
     const $fragment = document.createDocumentFragment();
 
     // TOKEN
-    function check_cookie_name(token) {
-        const match = document.cookie.match(new RegExp('(^| )' + token + '=([^;]+)'));
-        if (match) {
-            console.log(match[2]);
-            let token = match[2]
-            console.log(token);
-            return token
-        }
-        else {
-            console.log('error al recuperar el token');
-        }
+    function getCookie(name) {
+        let matches = document.cookie.match(new RegExp(
+            "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+        ));
+        return matches ? decodeURIComponent(matches[1]) : undefined;
     }
-    const token = check_cookie_name("token");
+
+    const token = await getCookie("token");
 
     document.addEventListener("load", getAll(apiUrl, $table, $template, $fragment))
-
     document.addEventListener("submit", e => {
         post(e, apiUrl, $table, $template, $fragment, token)
     })
-
     document.addEventListener("click", e => {
         if (e.target.matches(".edit-btn") || e.target.matches((".delete-btn"))) {
             deleteProduct(e, apiUrl, token)
