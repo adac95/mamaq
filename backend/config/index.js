@@ -5,7 +5,7 @@ const DBNAME = process.env.DB_NAME
 const MONGO_URI = `mongodb+srv://${USER}:${PASSWORD}@cluster0.pnsvs.mongodb.net/${DBNAME}?retryWrites=true&w=majority` 
 
 const config = {
-    dev: process.env.NODE_ENV !== 'production',
+    nodeEnv: process.env.NODE_ENV,
     port: process.env.PORT || 3005,
     cors: process.env.CORS,
     dbUser: process.env.DB_USER,
