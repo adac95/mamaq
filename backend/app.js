@@ -36,9 +36,10 @@ app.use(morgan('dev'))
 app.use(multer(storage).single('createProductImg'))
 app.use(cookieParser())
 // Express Session
+app.set('trust proxy', 1)
 app.use(session({
     secret: config.expressSessionSecret,
-    resave: true,
+    resave: false,
     saveUninitialized: true,
     cookie: {
         maxAge: 300000,
