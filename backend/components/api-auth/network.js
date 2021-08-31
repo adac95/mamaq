@@ -17,16 +17,22 @@ router.post('/sign-up', (req, res) => {
 
 // SIGNIN 
 router.post('/sign-in', passport.authenticate('local', { failureRedirect: '/' }), async function (req, res) {
-  const user = req.user
-  const payload = await { id: req.user._id, username: req.user.username, email: req.user.email }
-  const token = await jwt.sign(payload, config.secretToken, {
-    expiresIn: 300000,
-  });
-  res.cookie("token", token, {
-    httpOnly: !config.dev,
-    secure: !config.dev
-  })
-  res.json({"body": user})
+  try {
+    const user = req.user
+    const payload = await { id: req.user._id, username: req.user.username, email: req.user.email }
+    const token = await jwt.sign(payload, config.secretToken, {
+      expiresIn: 300000,
+    });
+    res.cookie("token", token, {
+      httpOnly: !config.dev,
+      secure: !config.dev
+    })
+    res.json({ "body": user })
+
+  } catch (error) {
+    res.send(error)
+  }
+
 });
 
 // LOGOUT

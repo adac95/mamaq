@@ -16,6 +16,7 @@ export default function crud() {
         if (match) {
             console.log(match[2]);
             let token = match[2]
+            console.log(token);
             return token
         }
         else {
