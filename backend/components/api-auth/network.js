@@ -24,8 +24,8 @@ router.post('/sign-in', passport.authenticate('local', { failureRedirect: '/' })
       expiresIn: 300000,
     });
     res.cookie("token", token, {
-      httpOnly: !config.dev,
-      secure: !config.dev
+      httpOnly: config.dev === "production" ? true : false,
+      secure: config.dev === "production" ? true : false
     })
     res.json({ "body": user })
 

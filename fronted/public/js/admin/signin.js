@@ -10,7 +10,7 @@ export default function signin() {
             }
             let res = await fetch("../api/auth/sign-in", options)
             let json = await res.json()
-            console.log(json);
+            console.log(res);
             location.reload();
             
         } catch (error) {  

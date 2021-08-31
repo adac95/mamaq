@@ -4,7 +4,6 @@ import inputValidation from "./js/reservas/input-validation.js";
 import responsiveMap from "./js/reservas/responsive-map.js"
 import crud from "./js/create-products/main-crud.js";
 import signin from "./js/admin/signin.js"
-import goToCreateProductsLink from "./js/admin/goToCreateProductsLink.js";
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -23,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         case "/admin":
             signin()
-            // goToCreateProductsLink()
             break;
 
         case "/admin/create-products":
