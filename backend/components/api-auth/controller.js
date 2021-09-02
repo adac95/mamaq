@@ -27,19 +27,15 @@ async function signUp(username, email, password, roles) {
                     message = `Role ${roles[i]} does not exist`;
                     console.log(message);
                     return message
-                } else {
+                } else {// Si llegan roles que existen sacar su ID
                     const foundRoles = await Role.roleModel.find({ name: { $in: roles } });
                     roles = foundRoles.map((role) => role._id);
                 }
             }
-            // Si llegan roles que existen sacar su ID
-
         } else {
             const role = await Role.roleModel.findOne({ name: "user" });
             roles = role._id;
         }
-        // Hash de password
-
         // Actualizar los nuevos datos para enviar a la BD
         const newUser = {
             username,
@@ -53,7 +49,8 @@ async function signUp(username, email, password, roles) {
         const token = jwt.sign({ id: userRegister._id }, config.secretToken, {
             expiresIn: 86400, // 24 hours
         });
-        return token
+        data = {token, userRegister}
+        return data
     } catch (error) {
         console.log(error);
         message = "Error desde el servidor al crear usuario"

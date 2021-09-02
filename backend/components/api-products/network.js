@@ -17,7 +17,9 @@ router.get('/', (req, res) => {
 })
 
 router.post('/',
-[authJwt.isAuthenticated,authJwt.isAdmin, passport.authenticate('jwt', { session: false })],
+[authJwt.isAuthenticated
+    // ,authJwt.isAdmin
+    , passport.authenticate('jwt', { session: false })],
     (req, res) => {
         const { name, price, category, description } = req.body
         controller.addProduct(name, price, category, description, req.file)
@@ -30,7 +32,9 @@ router.post('/',
     })
 
 router.patch('/:id',
-[authJwt.isAuthenticated,authJwt.isAdmin, passport.authenticate('jwt', { session: false })],
+[authJwt.isAuthenticated
+    // ,authJwt.isAdmin
+    , passport.authenticate('jwt', { session: false })],
     (req, res) => {
         const { name, price, category, description } = req.body
         controller.patchProduct(req.params.id, name, price, category, description)

@@ -34,14 +34,5 @@ userSchema.methods.comparePassword = async function(password) {
     const compare = await bcrypt.compare(password, user.password)
     return compare
 }
-
-// productSchema.statics.encryptPassword = async (password) => {
-//     const salt = await bcrypt.genSalt(10);
-//     return await bcrypt.hash(password, salt);
-// };
-
-// userSchema.statics.comparePassword = async (password, receivedPassword) => {
-//     return await bcrypt.compare(password, receivedPassword)
-// }
 const userModel = model("User", userSchema); 
 module.exports =  userModel
