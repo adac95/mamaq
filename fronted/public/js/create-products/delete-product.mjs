@@ -1,3 +1,5 @@
+import CrudService from "./probando/CrudService.mjs"
+
 export default async function deleteProduct(e, url, token) {
     try {
         // ENCONTRANDO EL ID DEL PRODUCTO PRESIONADO
@@ -26,17 +28,19 @@ export default async function deleteProduct(e, url, token) {
             return false
         }
         else if (e.target.textContent === "Sí Eliminar") {
-            let options = {
-                method: "DELETE",
-                headers: {
-                    "Content-type": "application/json; charset=utf-8",
-                    "x-access-token": token
-                }
-            };
-            let res = await fetch(`${url}/${e.target.dataset._id}`, options);
-            let json = await res.json();
+            const crudService = new CrudService(url)
+            await crudService.deleteData(e.target.dataset._id)
+            // let options = {
+            //     method: "DELETE",
+            //     headers: {
+            //         "Content-type": "application/json; charset=utf-8",
+            //         "x-access-token": token
+            //     }
+            // };
+            // let res = await fetch(`${url}/${e.target.dataset._id}`, options);
+            // let json = await res.json();
 
-            if (!res.ok) throw { status: res.status, statusText: res.statusText }
+            // if (!res.ok) throw { status: res.status, statusText: res.statusText }
 
             location.reload();
         }

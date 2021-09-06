@@ -4,7 +4,6 @@ export default function signin() {
         const $form = document.getElementById("signinForm");
         if ($form !== undefined) {
             if (e.target === $form) {
-                console.log("hola");
                 try {
                     const formData = new FormData(e.target)
                     const options = {

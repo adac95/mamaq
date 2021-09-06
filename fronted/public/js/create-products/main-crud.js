@@ -10,25 +10,25 @@ export default async function crud() {
     const $template = document.getElementById("items-template").content;
     const $fragment = document.createDocumentFragment();
 
-    // TOKEN
-    function getCookie(name) {
-        let matches = document.cookie.match(new RegExp(
-            "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-        ));
-        return matches ? decodeURIComponent(matches[1]) : undefined;
-    }
+    // // TOKEN
+    // function getCookie(name) {
+    //     let matches = document.cookie.match(new RegExp(
+    //         "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    //     ));
+    //     return matches ? decodeURIComponent(matches[1]) : undefined;
+    // }
 
-    const token = await getCookie("token");
+    // const token = await getCookie("token");
 
     document.addEventListener("load", getAll(apiUrl, $table, $template, $fragment))
     document.addEventListener("submit", e => {
-        post(e, apiUrl, $table, $template, $fragment, token)
+        post(e, apiUrl)
     })
     document.addEventListener("click", e => {
         if (e.target.matches(".edit-btn") || e.target.matches((".delete-btn"))) {
-            deleteProduct(e, apiUrl, token)
+            deleteProduct(e, apiUrl)
             // delete tiene que ir antes que patch porque sino al presionar cancelar patch se manda como peticion delete
-            patch(e, apiUrl, token)
+            patch(e, apiUrl)
         }
     })
 

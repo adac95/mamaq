@@ -1,3 +1,4 @@
+import CrudService from "./probando/CrudService.mjs";
 
 export default async function patch(e, url, token) {
     try {
@@ -77,8 +78,6 @@ export default async function patch(e, url, token) {
             if (tr.querySelector(".divMessage")) {
                 tr.removeChild(tr.querySelector(".divMessage"))
             }
-
-
         }
         // BOTON ACEPTAR
         else if (e.target.textContent === "Aceptar") {
@@ -110,23 +109,32 @@ export default async function patch(e, url, token) {
                 return
             }
             // MANDAR PETICION
-            let options = {
-                method: "PATCH",
-                headers: {
-                    "Content-type": "application/json; charset=utf-8",
-                    "x-access-token": token
-                },
-                body: JSON.stringify({
-                    name: e.target.dataset.name,
-                    price: e.target.dataset.price,
-                    category: e.target.dataset.category,
-                    description: e.target.dataset.description
-                })
-            };
+            const body =  {
+                name: e.target.dataset.name,
+                price: e.target.dataset.price,
+                category: e.target.dataset.category,
+                description: e.target.dataset.description
+            }
+            const crudService = new CrudService(url)
+            const res = await crudService.patchData(body, e.target.dataset._id)
+            
+            // // let options = {
+            // //     method: "PATCH",
+            // //     headers: {
+            // //         "Content-type": "application/json; charset=utf-8",
+            // //         "x-access-token": token
+            // //     },
+            // //     body: JSON.stringify({
+            // //         name: e.target.dataset.name,
+            // //         price: e.target.dataset.price,
+            // //         category: e.target.dataset.category,
+            // //         description: e.target.dataset.description
+            // //     })
+            // };
 
-            let res = await fetch(`${url}/${e.target.dataset._id}`, options);
-            let json = await res.json();
-            console.log(json);
+            // let res = await fetch(`${url}/${e.target.dataset._id}`, options);
+            // let json = await res.json();
+            // console.log(res);
 
             // CAMBIAR LOS INPUTS POR LOS VALORES ACTUALIZADOS
             tr.querySelector(".item-name").textContent = e.target.dataset.name
