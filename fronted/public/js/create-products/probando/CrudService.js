@@ -1,12 +1,31 @@
 export default class CrudService {
     constructor(URI) {
         this.URI = URI;
+        this.token = this.getCookie("token");
+        this.headers = {
+            "Content-type": "application/json; charset=utf-8",
+            "x-access-token": this.token
+        }
     }
+
+    // TOKEN
+    getCookie(name) {
+        let matches = document.cookie.match(new RegExp(
+            "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+        ));
+        return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
+
 
     async getData() {
         try {
-            let res = await fetch(this.URI)
-            let {body, error} = await res.json();
+            let options = {
+                method: "GET",
+                headers : this.headers,
+                body: data
+            };
+            let res = await fetch(this.URI, options)
+            let { body, error } = await res.json();
             return body
 
         } catch (error) {
