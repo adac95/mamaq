@@ -10,16 +10,6 @@ export default async function crud() {
     const $template = document.getElementById("items-template").content;
     const $fragment = document.createDocumentFragment();
 
-    // // TOKEN
-    // function getCookie(name) {
-    //     let matches = document.cookie.match(new RegExp(
-    //         "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-    //     ));
-    //     return matches ? decodeURIComponent(matches[1]) : undefined;
-    // }
-
-    // const token = await getCookie("token");
-
     document.addEventListener("load", getAll(apiUrl, $table, $template, $fragment))
     document.addEventListener("submit", e => {
         post(e, apiUrl)
@@ -33,14 +23,3 @@ export default async function crud() {
     })
 
 }
-
-// PROBANDO... CON CLASES EN LA CARPETA DE PROBANDO 
-// import RenderProducts from './probando/Render.js'
-// const render = new RenderProducts();
-// const $form = document.getElementById("createForm");
-//     render.getProducts($table, $template, $fragment)
-//     document.addEventListener("submit", async e => {
-//         if (e.target == $form) { 
-//             e.preventDefault() 
-//             render.addProduct()
-//         }})
