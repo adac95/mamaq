@@ -10,39 +10,20 @@ export default async function deleteProduct(e, url, token) {
 
         // ESCOGIENDO EL TD DE LOS BOTONES
         const $td = $tr.querySelector(".td-btn")
+
         // CREANDO UN DIV E INGRESANDO EL MENSAJE 
         const $div = document.createElement("DIV")
         $div.classList.add("delete-warningMessage")
         $div.textContent = "SEGURO QUE DESEA ELIMINAR?"
 
         if (e.target.textContent === "Eliminar") {
-            $td.appendChild($div)
-            e.target.textContent = "No Eliminar"
-            $td.querySelector(".edit-btn").textContent = "Sí Eliminar"
-
+            deleteWarning(e, $td)
         }
         else if (e.target.textContent === "No Eliminar") {
-            e.target.textContent = "Eliminar"
-            $td.querySelector(".edit-btn").textContent = "Editar"
-            $td.removeChild($td.querySelector(".delete-warningMessage"))
-            return false
+            deleteCancel(e, $td)
         }
         else if (e.target.textContent === "Sí Eliminar") {
-            const crudService = new CrudService(url)
-            await crudService.deleteData(e.target.dataset._id)
-            // let options = {
-            //     method: "DELETE",
-            //     headers: {
-            //         "Content-type": "application/json; charset=utf-8",
-            //         "x-access-token": token
-            //     }
-            // };
-            // let res = await fetch(`${url}/${e.target.dataset._id}`, options);
-            // let json = await res.json();
-
-            // if (!res.ok) throw { status: res.status, statusText: res.statusText }
-
-            location.reload();
+            deleteRequest(e, url)
         }
     } catch (err) {
         console.log(err)
@@ -50,3 +31,22 @@ export default async function deleteProduct(e, url, token) {
         alert(`Error ${err.status}: ${message}`);
     }
 };
+
+function deleteWarning(e, $td) {
+    $td.appendChild($div)
+    e.target.textContent = "No Eliminar"
+    $td.querySelector(".edit-btn").textContent = "Sí Eliminar"
+}
+
+function deleteCancel(e, $td) {
+    e.target.textContent = "Eliminar"
+    $td.querySelector(".edit-btn").textContent = "Editar"
+    $td.removeChild($td.querySelector(".delete-warningMessage"))
+    return false
+}
+
+function deleteRequest(e, url) {
+    const crudService = new CrudService(url)
+    await crudService.deleteData(e.target.dataset._id)
+    location.reload();
+}
