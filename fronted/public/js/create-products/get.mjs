@@ -4,7 +4,7 @@ import CrudService from "./probando/CrudService.mjs";
 export default async function getAll(url, table, template, fragment) {
     try {
         const crudService = new CrudService(url)
-        let res = await crudService.getData()
+        const res = await crudService.getData()
         const { body, error } = res;
 
         if (error) throw { error: `error al solicitar productos: ${error}` }

@@ -5,7 +5,7 @@ export default async function patch(e, url, token) {
         // identificar el id
         let id = e.target.dataset._id;
         // Traer todas las filas ()
-        const trs = [...document.querySelectorAll(".item-tr-fetch")];
+        const trs = Array.from(document.querySelectorAll(".item-tr-fetch"));
         // encontrar la fila del id que necesitamos
         const tr = trs.find(el => el.dataset._id == id)
         // crear inputs para editar
