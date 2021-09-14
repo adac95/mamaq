@@ -1,6 +1,6 @@
 
 
-    <%- include('templates/admin/adminHeader', {tittle: 'crear productos', css: ['<link rel="stylesheet" href="../public/css/create-products.css">']}) %>
+    <%- include('templates/admin/header', {tittle: 'crear productos', css: ['<link rel="stylesheet" href="../public/css/create-products.css">']}) %>
     <main class="main">
         <section class="create-item-section">
             <form class="create-item__form" id="createForm">
@@ -25,6 +25,9 @@
                 </label>
                 <input class="form__input form__input--submit" type="submit" value="Crear item">
             </form>
+            <div>
+                <p class="p create-item__p">Revisa como quedó la carta en la página! Haciendo click <a class="a create-item__a-render" href="/carta">Aquí</a></p>
+            </div>
         </section>
         <section id="list-item-section" class="list-item-section">
             <h2 class="h2 items__h2">Productos</h2>

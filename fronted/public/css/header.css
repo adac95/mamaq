@@ -1,3 +1,50 @@
+/* SI EXISTE USUARIO */
+.header__datos-container {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 2rem;
+    background-color: var(--header-color-mobile);
+    color: var(--white-color);
+
+}
+
+.datos__p {
+    font-size: 1.6rem;
+    margin-right: 1rem;
+}
+
+.a-svg {
+    width: 25px;
+    margin: 0 2rem;
+    color: var(--white-color);
+}
+
+.admin-header-svg:hover {
+    width: 24px;
+    color:var(--orange-color);
+}
+
+.datos__btn {
+    /* height: 22px; */
+    padding: .3rem 1rem;
+    font-size: 1.2rem;
+    border-radius: 20px;
+    background-color: transparent;
+    color: var(--white-color);
+    cursor: pointer;
+    border: solid 1px var(--white-color);
+}
+
+.datos__btn:hover {
+    color: red;
+    background-color: #000;
+    border-color: red;
+}
+
+/* NORMAL */
 .header {
     width: 100%;
     height: 70px;

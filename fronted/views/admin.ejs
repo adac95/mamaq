@@ -1,4 +1,4 @@
-<%- include('templates/admin/adminHeader', {tittle: 'admin dashboard' ,
+<%- include('templates/admin/header', {tittle: 'admin dashboard' ,
   css: '<link rel="stylesheet" href="../public/css/admin.css">' }) %>
 
   <main class="main">
@@ -71,13 +71,12 @@
             <p class="p option__p">Crear nuevos usuarios</p>
             <a href="/admin/create-users" class="a option__btn btn-warning">Click aquí</a>
           </div>
-          <div class="main__option">
-            <p class="p option__p">Ir a la pagina de Mamaq</p>
-            <a href="/" class="a option__btn btn-warning">Click aquí</a>
-          </div>
         </div>
         <span id="signinForm"></span>
         <span id="signupForm"></span>
         <% } %>
-
+        <div class="main__option">
+          <p class="p option__p">Ir a la pagina de Mamaq</p>
+          <a href="/" class="a option__btn btn-warning">Click aquí</a>
+        </div>
           <%- include('templates/admin/footer') %>
