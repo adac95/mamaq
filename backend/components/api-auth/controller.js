@@ -15,7 +15,8 @@ async function signUp(username, email, password, roles) {
         }
         // verificar que no exista el usuario
         const user = await UserModel.findOne({ username });
-        if (user) {
+        const userMail = await UserModel.findOne({ email });
+        if (user || userMail) {
             message = "The user already exists"
             console.log(message);
             return message
@@ -43,7 +44,7 @@ async function signUp(username, email, password, roles) {
             password,
             roles,
         }
-        // Guarandando usuario en la BD
+        // Guardando usuario en la BD
         const userRegister = await store.signUp(newUser)
         // crear Token de acceso
         const token = jwt.sign({ id: userRegister._id }, config.secretToken, {

@@ -43,8 +43,8 @@ app.use(session({
     saveUninitialized: true,
     cookie: {
         maxAge: 300000,
-        httpOnly: config.nodeEnv === "production" ? true : false,
-        secure: config.nodeEnv === "production" ? true : false
+        // httpOnly: config.nodeEnv === "production" ? true : false,
+        // secure: config.nodeEnv === "production" ? true : false
     },
     store: MongoStore.create({ mongoUrl: config.dbUri })
 }))

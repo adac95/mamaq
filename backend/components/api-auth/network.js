@@ -12,12 +12,17 @@ router.post('/sign-up', (req, res) => {
   controller.signUp(username, email, password, roles)
     .then((data) => {
       const { token, userRegister } = data
-      passport.authenticate('local')(req, res, () => {
-        res.status(200).cookie("token", token, {
-          httpOnly: config.nodeEnv === "production" ? true : false,
-          secure: config.nodeEnv === "production" ? true : false
-        }).json({ "body": "Usuario creado" })
-      })
+      console.log(data);
+      if (token) {
+        passport.authenticate('local')(req, res, () => {
+          res.status(200).cookie("token", token, {
+            // httpOnly: config.nodeEnv === "production" ? true : false,
+            // secure: config.nodeEnv === "production" ? true : false
+          }).json({ "body": "Usuario creado" })
+        })
+      } else {
+        res.json({"error": data})
+      }
     })
     .catch(error => response.error(req, res, "Error al registrarse", 500, error))
 })
@@ -31,8 +36,8 @@ router.post('/sign-in', passport.authenticate('local', { failureRedirect: '/' })
       expiresIn: 300000,
     });
     res.cookie("token", token, {
-      httpOnly: config.nodeEnv === "production" ? true : false,
-      secure: config.nodeEnv === "production" ? true : false
+      // httpOnly: config.nodeEnv === "production" ? true : false,
+      // secure: config.nodeEnv === "production" ? true : false
     })
     res.json({ "body": user })
   } catch (error) {
