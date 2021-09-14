@@ -3,7 +3,7 @@ export default class CrudService {
         this.URI = URI;   
     }
 
-    setHedears() {
+    setHeaders() {
         return {
             "Content-type": "application/json; charset=utf-8",
             "x-access-token": this.getCookie("token")
@@ -21,7 +21,7 @@ export default class CrudService {
         try {
             let options = {
                 method: "GET",
-                headers: this.getHeaders()
+                headers: this.setHeaders()
             };
             let res = await fetch(this.URI, options)
             let json = await res.json();
@@ -38,7 +38,7 @@ export default class CrudService {
         try {
             let options = {
                 method: "POST",
-                headers: {"x-access-token": this.getCookie()},
+                headers: {"x-access-token": this.getCookie("token")},
                 body: data
             };
             let res = await fetch(this.URI, options);
@@ -56,7 +56,7 @@ export default class CrudService {
         try {
             let options = {
                 method: "PATCH",
-                headers: this.getHeaders(),
+                headers: this.setHeaders(),
                 body: JSON.stringify(data)
             };
             let res = await fetch(`${this.URI}/${id}`, options);
@@ -73,7 +73,7 @@ export default class CrudService {
         try {
             let options = {
                 method: "DELETE",
-                headers: this.getHeaders(),
+                headers: this.setHeaders(),
             };
             let res = await fetch(`${this.URI}/${id}`, options);
             let json = await res.json();

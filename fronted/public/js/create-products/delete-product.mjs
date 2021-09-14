@@ -1,7 +1,9 @@
-import CrudService from "./probando/CrudService.mjs"
+import CrudService from "./CrudService.mjs"
 
-export default async function deleteProduct(e, url, token) {
+export default async function deleteProduct(e, url) {
     try {
+        // Variables Globales
+        const globals = {}
         // ENCONTRANDO EL ID DEL PRODUCTO PRESIONADO
         const id = e.target.dataset._id
 
@@ -16,14 +18,20 @@ export default async function deleteProduct(e, url, token) {
         $div.classList.add("delete-warningMessage")
         $div.textContent = "SEGURO QUE DESEA ELIMINAR?"
 
+        // Agregando variables globales
+        globals.e = e
+        globals.url = url
+        globals.$td = $td
+        globals.$div = $div
+        
         if (e.target.textContent === "Eliminar") {
-            deleteWarning(e, $td)
+            deleteWarning(globals)
         }
         else if (e.target.textContent === "No Eliminar") {
-            deleteCancel(e, $td)
+            deleteCancel(globals)
         }
         else if (e.target.textContent === "Sí Eliminar") {
-            deleteRequest(e, url)
+            deleteRequest(globals)
         }
     } catch (err) {
         console.log(err)
@@ -32,20 +40,23 @@ export default async function deleteProduct(e, url, token) {
     }
 };
 
-function deleteWarning(e, $td) {
+function deleteWarning(globals) {
+    const {$td, $div, e} = globals 
     $td.appendChild($div)
     e.target.textContent = "No Eliminar"
     $td.querySelector(".edit-btn").textContent = "Sí Eliminar"
 }
 
-function deleteCancel(e, $td) {
+function deleteCancel(globals) {
+    const {$td, e} = globals 
     e.target.textContent = "Eliminar"
     $td.querySelector(".edit-btn").textContent = "Editar"
     $td.removeChild($td.querySelector(".delete-warningMessage"))
     return false
 }
 
-function deleteRequest(e, url) {
+async function deleteRequest(globals) {
+    const {url, e} = globals 
     const crudService = new CrudService(url)
     await crudService.deleteData(e.target.dataset._id)
     location.reload();

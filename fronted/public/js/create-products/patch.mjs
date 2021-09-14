@@ -1,40 +1,46 @@
-import CrudService from "./probando/CrudService.mjs";
+import CrudService from "./CrudService.mjs";
 
-export default async function patch(e, url, token) {
+export default async function patch(e, url) {
     try {
+        // VARIABLES GLOBALES
+        const globals = {}
         // identificar el id
-        let id = e.target.dataset._id;
+        const id = e.target.dataset._id;
         // Traer todas las filas ()
         const trs = Array.from(document.querySelectorAll(".item-tr-fetch"));
         // encontrar la fila del id que necesitamos
         const tr = trs.find(el => el.dataset._id == id)
+        // Agregando las variables globales
+        globals.tr = tr
+        globals.e = e
+        globals.url = url
 
         // crear inputs para editar
-        createInputs()
+        createInputs(globals)
 
         // BOTON EDITAR
         if (e.target.textContent === "Editar") {
-            setInputsAndValues(e)
+            setInputsAndValues(globals)
         }
         // BOTON CANCELAR 
         else if (e.target.textContent === "Cancelar") {
-            cancelRequest(e)
+            cancelRequest(globals)
         }
         // BOTON ACEPTAR
         else if (e.target.textContent === "Aceptar") {
             // SI NO SE LLEGA A ESCRIBIR NADA PARA ENVIAR PETICION PATCH SETEAR LOS VALORES YA PUESTOS Y NO HACER PETICION
-            validateEmptyFields(e)
+            validateEmptyFields(globals)
             // MANDAR PETICION
-            sendRequest(e)
+            sendRequest(globals)
             // CAMBIAR LOS INPUTS POR LOS VALORES ACTUALIZADOS
-            updateInputsAndValues(e)
+            updateInputsAndValues(globals)
         }
     } catch (error) {
         console.log(error, "error al actualizar")
     }
 }
 
-function createInputs() {
+function createInputs(globals) {
     // name
     const $input = document.createElement("input");
     // price
@@ -61,9 +67,19 @@ function createInputs() {
     // Crear div para mensaje de error en caso quieran mandar un input vacio
     const $divMessage = document.createElement("div");
     $divMessage.classList.add("divMessage")
+    globals.$input = $input;
+    globals.$input1 = $input1;
+    globals.$input2 = $input2;
+    globals.$input3 = $input3;
+    globals.$input4 = $input4;
+    globals.$veggieOption = $veggieOption;
+    globals.$veganOption = $veganOption;
+    globals.$meatOption = $meatOption;
+    return globals
 }
 
-function setInputsAndValues(e) {
+function setInputsAndValues(globals) {
+    const { tr, e, $input, $input1, $input2, $input3, $meatOption, $veganOption, $veggieOption } = globals
     tr.querySelector(".item-name").textContent = ""
     tr.querySelector(".item-name").appendChild($input).value = tr.dataset.name
     tr.querySelector(".item-price").textContent = ""
@@ -89,7 +105,8 @@ function setInputsAndValues(e) {
     tr.querySelector(".delete-btn").textContent = "Cancelar"
 }
 
-function cancelRequest(e) {
+function cancelRequest(globals) {
+    const { tr, e } = globals;
     tr.querySelector(".item-name").textContent = tr.dataset.name
     tr.querySelector(".item-price").textContent = tr.dataset.price
     tr.querySelector(".item-category").textContent = tr.dataset.category
@@ -104,7 +121,8 @@ function cancelRequest(e) {
     }
 }
 
-function validateEmptyFields(e) {
+function validateEmptyFields(globals) {
+    const { tr, e, $divMessage } = globals;
     if (!e.target.dataset.name && !e.target.dataset.price && !e.target.dataset.category && !e.target.dataset.description) {
         console.log("vacio");
         tr.querySelector(".item-name").textContent = tr.dataset.name
@@ -132,7 +150,8 @@ function validateEmptyFields(e) {
     }
 }
 
-function sendRequest(e) {
+async function sendRequest(globals) {
+    const { e, url } = globals;
     const body = {
         name: e.target.dataset.name,
         price: e.target.dataset.price,
@@ -143,7 +162,8 @@ function sendRequest(e) {
     const res = await crudService.patchData(body, e.target.dataset._id)
 }
 
-function updateInputsAndValues(e) {
+function updateInputsAndValues(globals) {
+    const { tr, e } = globals;
     tr.querySelector(".item-name").textContent = e.target.dataset.name
     tr.querySelector(".item-price").textContent = e.target.dataset.price
     tr.querySelector(".item-category").textContent = e.target.dataset.category

@@ -1,4 +1,4 @@
-import CrudService from "./probando/CrudService.mjs";
+import CrudService from "./CrudService.mjs";
 
 export default async function getAll(url, table, template, fragment) {
     try {
