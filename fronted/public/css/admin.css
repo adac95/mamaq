@@ -5,7 +5,15 @@
     color: #ffffff;
     letter-spacing: .3rem;
   }
-
+  .error-flash__p {
+    font-size: 1.6rem;
+    width: 87%;
+    margin: 2rem auto;
+    text-align: center;
+    border: solid 1px red;
+    color: red;
+    border-radius: 20px;
+  }
   .form-check {
     margin-top: .5rem;
     margin-bottom: .6rem;
