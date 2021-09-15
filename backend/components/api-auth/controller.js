@@ -4,12 +4,18 @@ const Role = require('../models/Roles')
 const config = require('../../config/index')
 const jwt = require('jsonwebtoken')
 
-async function signUp(username, email, password, roles) {
+async function signUp(username, email, password, confirmPassword, roles) {
     let message;
     try {
         // verificando que vengan todos los datos
-        if (!username || !email || !password) {
+        if (!username || !email || !password || !confirmPassword) {
             message = "Faltan llenar campos requeridos"
+            console.log(message);
+            return message;
+        }
+        // COMPARAR LAS PASSWRODS
+        if(password != confirmPassword) {
+            message = "Las contraseñas no coinciden"
             console.log(message);
             return message;
         }

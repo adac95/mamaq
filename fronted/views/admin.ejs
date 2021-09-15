@@ -3,6 +3,7 @@
 
   <main class="main">
     <% if(!user) { %>
+      <!-- SIGN IN -->
       <section class="signin-section">
         <form id="signinForm" class="container mt-5">
           <div class="align-items-center container-sm fs-5">
@@ -29,7 +30,7 @@
           <p class="p forget__p">Olvidaste tus datos? <a class="a forget__a">Haz click aquí</a></p>
         </div>
       </section>
-
+      <!-- SIGN UP -->
       <section class="signup-section">
         <form id="signupForm" class="container mt-5">
           <div class="align-items-center container-sm fs-5">
@@ -49,7 +50,7 @@
               <label for="floatingPassword">Contraseña</label>
             </div>
             <div class="form-floating mb-3">
-              <input id="floatingPassword-repeatPassword-signup" type="password" class="form-control"
+              <input id="floatingPassword-repeatPassword-signup" type="password" name="confirmPassword" class="form-control"
                 placeholder="Password">
               <label for="floatingPassword" required>Confirmar contraseña</label>
             </div>

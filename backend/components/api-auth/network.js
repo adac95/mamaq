@@ -8,11 +8,10 @@ const passport = require('passport')
 
 // SIGNUP
 router.post('/sign-up', (req, res) => {
-  const { username, email, password, roles } = req.body
-  controller.signUp(username, email, password, roles)
+  const { username, email, password, confirmPassword, roles } = req.body
+  controller.signUp(username, email, password, confirmPassword, roles)
     .then((data) => {
       const { token, userRegister } = data
-      console.log(data);
       if (token) {
         passport.authenticate('local')(req, res, () => {
           res.status(200).cookie("token", token, {
