@@ -13,7 +13,7 @@ router.post('/sign-up', (req, res) => {
     .then((data) => {
       const { token, userRegister } = data
       if (token) {
-        passport.authenticate('local',{ failureFlash: true})(req, res, () => {
+        passport.authenticate('local', { successRedirect: '/admin', failureRedirect: '/', failureFlash: true })(req, res, () => {
           res.status(200).cookie("token", token, {
             // httpOnly: config.nodeEnv === "production" ? true : false,
             // secure: config.nodeEnv === "production" ? true : false
@@ -21,14 +21,14 @@ router.post('/sign-up', (req, res) => {
         })
       } else {
         req.flash("error_msg", data)
-        res.json({"error": data})
+        res.redirect('/admin')
       }
     })
     .catch(error => response.error(req, res, "Error al registrarse", 500, error))
 })
 
 // SIGNIN 
-router.post('/sign-in', passport.authenticate('local', {successRedirect: '/admin' ,failureRedirect: '/admin', failureFlash: true }), async function (req, res) {
+router.post('/sign-in', passport.authenticate('local', { successRedirect: '/admin', failureRedirect: '/admin', failureFlash: true }), async function (req, res) {
   try {
     const user = req.user
     const payload = { id: req.user._id, username: req.user.username, email: req.user.email }
