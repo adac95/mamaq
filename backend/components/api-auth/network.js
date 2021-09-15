@@ -13,13 +13,14 @@ router.post('/sign-up', (req, res) => {
     .then((data) => {
       const { token, userRegister } = data
       if (token) {
-        passport.authenticate('local')(req, res, () => {
+        passport.authenticate('local',{ failureFlash: true})(req, res, () => {
           res.status(200).cookie("token", token, {
             // httpOnly: config.nodeEnv === "production" ? true : false,
             // secure: config.nodeEnv === "production" ? true : false
           }).json({ "body": "Usuario creado" })
         })
       } else {
+        req.flash("error_msg", data)
         res.json({"error": data})
       }
     })
@@ -27,11 +28,11 @@ router.post('/sign-up', (req, res) => {
 })
 
 // SIGNIN 
-router.post('/sign-in', passport.authenticate('local', { failureRedirect: '/' }), async function (req, res) {
+router.post('/sign-in', passport.authenticate('local', {successRedirect: '/admin' ,failureRedirect: '/admin', failureFlash: true }), async function (req, res) {
   try {
     const user = req.user
-    const payload = await { id: req.user._id, username: req.user.username, email: req.user.email }
-    const token = await jwt.sign(payload, config.secretToken, {
+    const payload = { id: req.user._id, username: req.user.username, email: req.user.email }
+    const token = jwt.sign(payload, config.secretToken, {
       expiresIn: 30000000,
     });
     res.cookie("token", token, {

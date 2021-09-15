@@ -3,7 +3,7 @@ import slider from "./js/index/slider.js";
 import inputValidation from "./js/reservas/input-validation.js";
 import responsiveMap from "./js/reservas/responsive-map.js"
 import crud from "./js/create-products/main-crud.js";
-import signin from "./js/admin/signin.js"
+// import signin from "./js/admin/signin.js"
 import signup from "./js/admin/signup.js";
 
 
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
             break;
 
         case "/admin":
-            signin()
+            // signin()
             signup()
             break;
 

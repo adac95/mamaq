@@ -11,7 +11,6 @@ export default function signin() {
                         body: formData
                     }
                     let res = await fetch("../api/auth/sign-in", options)
-                    location.reload();
 
                 } catch (error) {
                     console.log(error);

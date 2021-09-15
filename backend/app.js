@@ -8,6 +8,7 @@ const multer = require('multer')
 const storage = require('./components/network/multer')
 const { createRoles, createAdmin } = require('./components/utils/initialSetup');
 const session = require('express-session')
+const flash = require('connect-flash');
 const cookieParser = require('cookie-parser')
 const MongoStore = require('connect-mongo');
 const config = require('./config/index')
@@ -48,11 +49,14 @@ app.use(session({
     },
     store: MongoStore.create({ mongoUrl: config.dbUri })
 }))
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 // Variables locales
 app.use((req, res, next) => {
     app.locals.user = req.user
+    res.locals.error_msg = req.flash("error_msg")
+    res.locals.error = req.flash("error");
     next()
 })
 
