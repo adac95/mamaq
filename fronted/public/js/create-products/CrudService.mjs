@@ -82,7 +82,7 @@ export default class CrudService {
 
         } catch (err) {
             let message = err.statusText || "Ocurrió un error al elimnar los datos";
-            console.log(error)
+            console.log(err)
             return message;
         }
     }

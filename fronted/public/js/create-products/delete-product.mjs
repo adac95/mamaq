@@ -23,7 +23,7 @@ export default async function deleteProduct(e, url) {
         globals.url = url
         globals.$td = $td
         globals.$div = $div
-        
+
         if (e.target.textContent === "Eliminar") {
             deleteWarning(globals)
         }
@@ -41,14 +41,14 @@ export default async function deleteProduct(e, url) {
 };
 
 function deleteWarning(globals) {
-    const {$td, $div, e} = globals 
+    const { $td, $div, e } = globals
     $td.appendChild($div)
     e.target.textContent = "No Eliminar"
     $td.querySelector(".edit-btn").textContent = "Sí Eliminar"
 }
 
 function deleteCancel(globals) {
-    const {$td, e} = globals 
+    const { $td, e } = globals
     e.target.textContent = "Eliminar"
     $td.querySelector(".edit-btn").textContent = "Editar"
     $td.removeChild($td.querySelector(".delete-warningMessage"))
@@ -56,8 +56,9 @@ function deleteCancel(globals) {
 }
 
 async function deleteRequest(globals) {
-    const {url, e} = globals 
-    const crudService = new CrudService(url)
-    await crudService.deleteData(e.target.dataset._id)
-    location.reload();
+        const { url, e } = globals
+        const crudService = new CrudService(url)
+        const json = await crudService.deleteData(e.target.dataset._id)
+        console.log(json)
+        location.reload();
 }

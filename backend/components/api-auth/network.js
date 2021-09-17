@@ -13,11 +13,11 @@ router.post('/sign-up', (req, res) => {
     .then((data) => {
       const { token, userRegister } = data
       if (token) {
-        passport.authenticate('local', { successRedirect: '/admin', failureRedirect: '/', failureFlash: true })(req, res, () => {
+        passport.authenticate('local', { failureRedirect: '/', failureFlash: true })(req, res, () => {
           res.status(200).cookie("token", token, {
             // httpOnly: config.nodeEnv === "production" ? true : false,
             // secure: config.nodeEnv === "production" ? true : false
-          }).json({ "body": "Usuario creado" })
+          }).redirect("../../admin")
         })
       } else {
         req.flash("error_msg", data)
@@ -28,9 +28,8 @@ router.post('/sign-up', (req, res) => {
 })
 
 // SIGNIN 
-router.post('/sign-in', passport.authenticate('local', { successRedirect: '/admin', failureRedirect: '/admin', failureFlash: true }), async function (req, res) {
+router.post('/sign-in', passport.authenticate('local', {  failureRedirect: '/admin', failureFlash: true }), async function (req, res) {
   try {
-    const user = req.user
     const payload = { id: req.user._id, username: req.user.username, email: req.user.email }
     const token = jwt.sign(payload, config.secretToken, {
       expiresIn: 30000000,
@@ -39,7 +38,7 @@ router.post('/sign-in', passport.authenticate('local', { successRedirect: '/admi
       // httpOnly: config.nodeEnv === "production" ? true : false,
       // secure: config.nodeEnv === "production" ? true : false
     })
-    res.json({ "body": user })
+    res.redirect("../../admin")
   } catch (error) {
     res.send(error)
   }
