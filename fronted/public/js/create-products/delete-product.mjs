@@ -59,6 +59,5 @@ async function deleteRequest(globals) {
         const { url, e } = globals
         const crudService = new CrudService(url)
         const json = await crudService.deleteData(e.target.dataset._id)
-        console.log(json)
         location.reload();
 }
