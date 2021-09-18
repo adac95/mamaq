@@ -1,0 +1,59 @@
+const express = require('express')
+const router = express.Router()
+const response = require('../utils/response')
+const controller = require("./controller")
+
+router.get('/',
+    // [authJwt.isAuthenticated, authJwt.isAdmin, passport.authenticate('jwt', { session: false })],
+    (req, res) => {
+        controller.getCarts()
+            .then(carts => response.success(req, res, carts, 200))
+            .catch(error => response.error(req, res.json, "Error al buscar carritos de compra", 500, error))
+    })
+
+router.get('/:id',
+    // [authJwt.isAuthenticated, authJwt.isAdmin, passport.authenticate('jwt', { session: false })],
+    (req, res) => {
+        controller.getOneCart(req.params.id)
+            .then(cart => response.success(req, res, cart, 200))
+            .catch(error => response.error(req, res, "Error al buscar usuario", 500, error))
+    })
+
+router.post('/',
+    // [authJwt.isAuthenticated, authJwt.isAdmin, passport.authenticate('jwt', { session: false })],
+    (req, res) => {
+        const { userId, products } = req.body;
+        const {productId, cantidad, price} = products[0]
+        controller.addProductToCart({ userId, productId, cantidad, price })
+            .then(newCart => response.success(req, res, newCart, 200))
+            .catch(error => response.error(req, res, "Error al crear usuario", 500, error))
+    })
+
+router.patch('/',
+    // [authJwt.isAuthenticated, authJwt.isAdmin, passport.authenticate('jwt', { session: false })],
+    (req, res) => {
+        const { cartId, products } = req.body;
+        const {products_id, cantidad} = products[0]
+        controller.patchCart({ cartId, products_id, cantidad })
+            .then(newCart => response.success(req, res, newCart, 200))
+            .catch(error => response.error(req, res, "Error al crear usuario", 500, error))
+    })
+
+router.delete('/:id',
+    // [authJwt.isAuthenticated, authJwt.isAdmin, passport.authenticate('jwt', { session: false })],
+    (req, res) => {
+        controller.deleteCart(req.params.id)
+            .then(() => response.success(req, res, "Usuario eliminado exitosamente", 200))
+            .catch(error => response.error(req, res, "No se pudo eliminar usuario", 500, error))
+    })
+
+router.delete('/:cartId/:products_id',
+    // [authJwt.isAuthenticated, authJwt.isAdmin, passport.authenticate('jwt', { session: false })],
+    (req, res) => {
+        const {cartId, products_id} = req.params
+        controller.deleteOneProductOfCart({cartId, products_id})
+            .then(() => response.success(req, res, "Usuario eliminado exitosamente", 200))
+            .catch(error => response.error(req, res, "No se pudo eliminar usuario", 500, error))
+    })
+
+module.exports = router
