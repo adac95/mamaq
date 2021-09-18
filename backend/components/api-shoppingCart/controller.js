@@ -1,6 +1,7 @@
 const store = require('./store');
 const ShoppingCartModel = require('../models/ShoppingCart');
-const UserModel = require('../models/Users')
+const UserModel = require('../models/Users');
+const { deleteOne } = require('../models/ShoppingCart');
 
 async function getCarts() {
     const carts = await store.getCarts()
@@ -17,7 +18,7 @@ async function deleteCart(id) {
     return cart;
 }
 
-async function patchCart({cartId, products_id, cantidad}) {
+async function patchCart({ cartId, products_id, cantidad }) {
     // valida que llegue el id y la data para actualizar
     if (!cartId || !products_id || !cantidad) {
         const message = "faltan datos para actualizar tu carrito de compras"
@@ -26,9 +27,13 @@ async function patchCart({cartId, products_id, cantidad}) {
     }
     const cart = await ShoppingCartModel.findById(cartId)
     const findingIdProductToPatch = cart.products.find(e => e._id == products_id)
-    findingIdProductToPatch.cantidad = cantidad;
-    const cartUpdated = await cart.save()
-    return cartUpdated
+    if (cantidad < 1) {
+        deleteOneProductOfCart({ cartId, products_id })
+    } else {
+        findingIdProductToPatch.cantidad = cantidad;
+        const cartUpdated = await cart.save()
+        return cartUpdated
+    }
 }
 
 async function deleteOneProductOfCart({ cartId, products_id }) {
@@ -65,11 +70,21 @@ async function addProductToCart({ userId, productId, cantidad, price }) {
             const newCart = await ShoppingCartModel({ userId, products: [{ productId, cantidad, price }] })
             await newCart.save()
             return newCart;
+        }
+        // Si ya existe el producto con el mismo precio en el carrito se suma la cantidad
+        const productToAdd = await userCart.products.find(e => e.productId == productId)
+        if (productToAdd && productToAdd.price == price) {
+            productToAdd.cantidad = parseFloat(productToAdd.cantidad) + parseFloat(cantidad)
+            const productAggregated = await userCart.save()
+            return productAggregated
         } else {
+            // Si no existe el producto en el carrito en agrega al array y se guarda el carrito
             await userCart.products.push({ productId, cantidad, price })
             await userCart.save()
             return userCart
+
         }
+
     } catch (error) {
         console.error(error);
     }
