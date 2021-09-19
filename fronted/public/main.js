@@ -3,9 +3,7 @@ import slider from "./js/index/slider.js";
 import inputValidation from "./js/reservas/input-validation.js";
 import responsiveMap from "./js/reservas/responsive-map.js"
 import crud from "./js/create-products/main-crud.js";
-// import signin from "./js/admin/signin.js"
-// import signup from "./js/admin/signup.js";
-
+import addProductsToCart from "./js/carta/index.js"
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -22,9 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
             responsiveMap()
             break;
 
-        case "/admin":
-            // signin()
-            // signup()
+        case "/carta":
+            addProductsToCart()
             break;
 
         case "/admin/create-products":

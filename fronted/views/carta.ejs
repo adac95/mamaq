@@ -1,8 +1,8 @@
 <%- include('templates/head', {tittle: 'La carta', css: '<link rel="stylesheet" href="../../public/css/carta.css">'}) %>
     <img class="carta__img" src="../public/assets/WEB-MAMAQ_CARTAheader.jpg" alt="imagen de la carta">
+    <% imgUploads.forEach(img => { %>
     <div id="cartaContainer" class="carta__template-container">
         <!-- AQUI NO FUNCIONA EL LOADIN LAZY  -->
-        <% imgUploads.forEach(img => { %>
             <img class="template-img" src="<%= img.imagen.path %>" alt="IMG">
             <span class="template-name-price">
                 <h3 class="template-product"><%= img.name %></h3>
@@ -10,16 +10,7 @@
             </span>
             <p class="template-description"><%= img.description %></p>
             <p class="template-category"><%= img.category %></p>
+            <button class="btn template-btn-cart carta__addCart-btn" data-productId="<%= img._id %>" data-userId="<%= user._id %>" data-productPrice="<%= img.price %>">Agregar al carrito</button>
+        </div>
         <% }); %>
-    </div>
-    <!-- <template id="cartaTemplate" class="template">
-            <img class="template-img"" src="" alt="IMG">
-            <span class="template-name-price">
-                <h3 class="template-product"></h3>
-                <p class="template-price"></p>
-            </span>
-            <p class="template-description"></p>
-            <p class="template-category"></p>
-    </template> -->
-    <!-- <script type="module" src="../public/js/main.js"></script> -->
     <%- include('templates/footer') %>
