@@ -16,12 +16,20 @@
     margin-right: 1rem;
 }
 
+.header__cart {
+    display: flex;
+    align-items: center;
+    margin: 0 1rem;
+    font-size: 1.6rem;
+}
 .a-svg {
-    width: 25px;
-    margin: 0 2rem;
+    margin: 0 .4rem;
     color: var(--white-color);
 }
-
+.svg-cart-counter {
+    color: var(--white-color);
+    width: 25px;
+}
 .admin-header-svg:hover {
     width: 24px;
     color:var(--orange-color);

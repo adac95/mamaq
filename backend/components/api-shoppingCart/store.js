@@ -12,7 +12,7 @@ async function getCarts() {
 }
 
 async function getOneOfCart(id) {
-    const user = await ShoppingCartModel.findById(id);
+    const user = await ShoppingCartModel.find({userId: id});
     return user;
 }
 

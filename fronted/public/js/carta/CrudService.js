@@ -17,13 +17,25 @@ export default class CrudService {
         return matches ? decodeURIComponent(matches[1]) : undefined;
     }
 
+    // PARSE TOKEN
+    parseJwt(token) {
+        var base64Url = token.split('.')[1];
+        var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+
+        return JSON.parse(jsonPayload);
+    };
+
     async getCart() {
         try {
             let options = {
                 method: "GET",
                 headers: this.setHeaders()
             };
-            let res = await fetch(this.URI, options)
+            const userId = this.parseJwt(this.getCookie("token")).id
+            let res = await fetch(`${this.URI}/${userId}`, options)
             let json = await res.json();
             return json
 

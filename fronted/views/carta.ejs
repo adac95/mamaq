@@ -10,7 +10,7 @@
             </span>
             <p class="template-description"><%= img.description %></p>
             <p class="template-category"><%= img.category %></p>
-            <button class="btn template-btn-cart carta__addCart-btn" data-productId="<%= img._id %>" data-userId="<%= user._id %>" data-productname="<%= img.name %>" data-productPrice="<%= img.price %>">Agregar al carrito</button>
+            <button id="addCartBtn" class="btn template-btn-cart carta__addCart-btn" data-productId="<%= img._id %>" data-userId="<%= user._id %>" data-productname="<%= img.name %>" data-productPrice="<%= img.price %>">Agregar al carrito</button>
         </div>
         <% }); %>
     <%- include('templates/footer') %>

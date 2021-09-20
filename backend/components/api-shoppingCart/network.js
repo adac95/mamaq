@@ -16,7 +16,7 @@ router.get('/:id',
     (req, res) => {
         controller.getOneCart(req.params.id)
             .then(cart => response.success(req, res, cart, 200))
-            .catch(error => response.error(req, res, "Error al buscar usuario", 500, error))
+            .catch(error => response.error(req, res, "Error al buscar el carrito de compras por usuario", 500, error))
     })
 
 router.post('/',
