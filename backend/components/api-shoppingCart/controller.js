@@ -1,7 +1,6 @@
 const store = require('./store');
 const ShoppingCartModel = require('../models/ShoppingCart');
 const UserModel = require('../models/Users');
-const { deleteOne } = require('../models/ShoppingCart');
 
 async function getCarts() {
     const carts = await store.getCarts()
@@ -48,7 +47,7 @@ async function deleteOneProductOfCart({ cartId, products_id }) {
     return deleteCart;
 }
 
-async function addProductToCart({ userId, productId, cantidad, price }) {
+async function addProductToCart({ userId, productId, productName, cantidad, price }) {
     try {
         // verificar que vengan todos los datos
         if (!userId || !productId || !cantidad || !price) {
@@ -67,7 +66,7 @@ async function addProductToCart({ userId, productId, cantidad, price }) {
         // verificar que exista el carrito o crear uno
         const userCart = await ShoppingCartModel.findOne({ "userId": userId });
         if (!userCart) {
-            const newCart = await ShoppingCartModel({ userId, products: [{ productId, cantidad, price }] })
+            const newCart = await ShoppingCartModel({ userId, products: [{ productId, productName, cantidad, price }] })
             await newCart.save()
             return newCart;
         }
@@ -79,7 +78,7 @@ async function addProductToCart({ userId, productId, cantidad, price }) {
             return productAggregated
         } else {
             // Si no existe el producto en el carrito en agrega al array y se guarda el carrito
-            await userCart.products.push({ productId, cantidad, price })
+            await userCart.products.push({ productId, productName,cantidad, price })
             await userCart.save()
             return userCart
 

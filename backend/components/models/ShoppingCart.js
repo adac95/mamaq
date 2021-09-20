@@ -11,6 +11,9 @@ const shoppingCartSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: "products",
         },
+        productName: {
+            type: String
+        },
         price: {
             type: Number,
             require: true
