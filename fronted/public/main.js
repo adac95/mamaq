@@ -3,12 +3,13 @@ import slider from "./js/index/slider.js";
 import inputValidation from "./js/reservas/input-validation.js";
 import responsiveMap from "./js/reservas/responsive-map.js"
 import crud from "./js/create-products/main-crud.js";
-import {addProductsToCart, getCart, setCounterDom} from "./js/carta/index.js"
+import {addProductsToCart, setCounterDom} from "./js/carta/index.js"
 
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
     mobileNav()
-    let path = window.location.pathname;
+    await setCounterDom()
+    const path = window.location.pathname;
 
     switch (path) {
         case "/":
@@ -22,8 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         case "/carta":
             addProductsToCart()
-            getCart()
-            setCounterDom()
             break;
 
         case "/admin/create-products":

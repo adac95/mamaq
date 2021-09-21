@@ -25,12 +25,13 @@
 .a-svg {
     margin: 0 .4rem;
     color: var(--white-color);
+    width: 25px;
 }
 .svg-cart-counter {
     color: var(--white-color);
     width: 25px;
 }
-.admin-header-svg:hover {
+.a-svg:hover {
     width: 24px;
     color:var(--orange-color);
 }

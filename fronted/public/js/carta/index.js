@@ -25,7 +25,6 @@ export function addProductsToCart() {
             console.log(error)
         }
     })
-
 }
 
 export async function getCart() {
@@ -43,10 +42,14 @@ async function getCartCounter() {
     try {
         const res = await getCart()
         let totalCartProducts = 0;
-        res.body[0].products.forEach(el => {
-            totalCartProducts += el.cantidad
+        if (!res.body[0]) {
             return totalCartProducts
-        });
+        } else {
+            res.body[0].products.forEach(el => {
+                totalCartProducts += el.cantidad
+                return totalCartProducts
+            });
+        }
         return totalCartProducts;
     } catch (error) {
         console.log(error)
@@ -56,6 +59,7 @@ async function getCartCounter() {
 export async function setCounterDom() {
     const counter = await getCartCounter()
     const $cartCounter = document.getElementById("cartCounter")
-    
-    $cartCounter.textContent = counter   
+    if($cartCounter){
+        $cartCounter.textContent = counter
+    }else return false
 }

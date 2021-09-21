@@ -15,15 +15,16 @@ router.get('/reservas', (req, res) => {
 
 router.get('/carta', async (req, res) => {
     const imgUploads = await ProdcutsModel.find();
-    // const cartProducts = await ShoppingCartModel.find({ "userId": req.user.id })
-    // const countTotalCartProducts = cartProducts[0].products
-    // let totalCartProducts = 0
-    // countTotalCartProducts.forEach(el => {
-    //     totalCartProducts += el.cantidad
-    //     return totalCartProducts
-    // });
-    // req.flash("cartCounter", totalCartProducts)
     res.render('carta', { imgUploads })
 })
 
+router.get('/cart', async (req, res) => {
+    const productsCart = await ShoppingCartModel.find({ "userId": req.user.id })
+    if (!productsCart[0]) {
+        res.render('cart')
+    } else {
+        const productsOfCartByUser = productsCart[0].products
+        res.render('cart', { productsOfCartByUser })
+    }
+})
 module.exports = router;
