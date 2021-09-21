@@ -28,10 +28,13 @@ export function addProductsToCart() {
 }
 
 export async function getCart() {
-
     try {
-        const res = await crudService.getCart()
-        return res
+        if (!crudService.getCookie("token")) {
+            return false
+        } else {
+            const res = await crudService.getCart()
+            return res
+        }
     } catch (error) {
         console.log(error)
     }
@@ -42,6 +45,9 @@ async function getCartCounter() {
     try {
         const res = await getCart()
         let totalCartProducts = 0;
+        // verificar que exista un usuario logeado desde la comprobacion del token
+        if(!crudService.getCookie("token")) return false
+        // verificar que exista al menos un producto en el carrito o poner 0 como defecto
         if (!res.body[0]) {
             return totalCartProducts
         } else {
@@ -59,7 +65,7 @@ async function getCartCounter() {
 export async function setCounterDom() {
     const counter = await getCartCounter()
     const $cartCounter = document.getElementById("cartCounter")
-    if($cartCounter){
+    if ($cartCounter) {
         $cartCounter.textContent = counter
-    }else return false
+    } else return false
 }

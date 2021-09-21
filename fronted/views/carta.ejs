@@ -1,16 +1,29 @@
-<%- include('templates/head', {tittle: 'La carta', css: '<link rel="stylesheet" href="../../public/css/carta.css">'}) %>
+<%- include('templates/head', {tittle: 'La carta' , css: '<link rel="stylesheet" href="../../public/css/carta.css">' })
+    %>
     <img class="carta__img" src="../public/assets/WEB-MAMAQ_CARTAheader.jpg" alt="imagen de la carta">
-    <% imgUploads.forEach(img => { %>
-    <div id="cartaContainer" class="carta__template-container">
-        <!-- AQUI NO FUNCIONA EL LOADIN LAZY  -->
+    <% imgUploads.forEach(img=> { %>
+        <div id="cartaContainer" class="carta__template-container">
+            <!-- AQUI NO FUNCIONA EL LOADIN LAZY  -->
             <img class="template-img" src="<%= img.imagen.path %>" alt="IMG">
             <span class="template-name-price">
-                <h3 class="template-product"><%= img.name %></h3>
-                <p class="template-price"><%= img.price %></p>
+                <h3 class="template-product">
+                    <%= img.name %>
+                </h3>
+                <p class="template-price">
+                    <%= img.price %>
+                </p>
             </span>
-            <p class="template-description"><%= img.description %></p>
-            <p class="template-category"><%= img.category %></p>
-            <button id="addCartBtn" class="btn template-btn-cart carta__addCart-btn" data-productId="<%= img._id %>" data-userId="<%= user._id %>" data-productname="<%= img.name %>" data-productPrice="<%= img.price %>">Agregar al carrito</button>
+            <p class="template-description">
+                <%= img.description %>
+            </p>
+            <p class="template-category">
+                <%= img.category %>
+            </p>
+            <% if(user) {%>
+                <button id="addCartBtn" class="btn template-btn-cart carta__addCart-btn" data-productId="<%= img._id %>"
+                    data-userId="<%= user._id %>" data-productname="<%= img.name %>"
+                    data-productPrice="<%= img.price %>">Agregar al carrito</button>
+                <% } %>
         </div>
         <% }); %>
-    <%- include('templates/footer') %>
+            <%- include('templates/footer') %>
