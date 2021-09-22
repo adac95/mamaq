@@ -43,7 +43,7 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     cookie: {
-        maxAge: config.expireTimeCookieToken,
+        maxAge:config.expireTimeCookieToken,
         // httpOnly: config.nodeEnv === "production" ? true : false,
         // secure: config.nodeEnv === "production" ? true : false
     },

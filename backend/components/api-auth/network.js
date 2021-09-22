@@ -15,6 +15,7 @@ router.post('/sign-up', (req, res) => {
       if (token) {
         passport.authenticate('local', { failureRedirect: '/', failureFlash: true })(req, res, () => {
           res.status(200).cookie("token", token, {
+            maxAge: config.expireTimeCookieToken,
             // httpOnly: config.nodeEnv === "production" ? true : false,
             // secure: config.nodeEnv === "production" ? true : false
           }).redirect("../../admin")
@@ -28,16 +29,18 @@ router.post('/sign-up', (req, res) => {
 })
 
 // SIGNIN 
-router.post('/sign-in', passport.authenticate('local', {  failureRedirect: '/admin', failureFlash: true }), async function (req, res) {
+router.post('/sign-in', passport.authenticate('local', { failureRedirect: '/admin', failureFlash: true }), async function (req, res) {
   try {
     const payload = { id: req.user._id, username: req.user.username, email: req.user.email }
     const token = jwt.sign(payload, config.secretToken, {
       expiresIn: config.expireTimeCookieToken,
     });
     res.cookie("token", token, {
-      // httpOnly: config.nodeEnv === "production" ? true : false,
-      // secure: config.nodeEnv === "production" ? true : false
-    })
+      maxAge: config.expireTimeCookieToken,
+      //   // httpOnly: config.nodeEnv === "production" ? true : false,
+      //   // secure: config.nodeEnv === "production" ? true : false
+    }
+    )
     res.redirect("../../admin")
   } catch (error) {
     res.send(error)

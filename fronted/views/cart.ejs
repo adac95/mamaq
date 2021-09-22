@@ -1,3 +1,13 @@
-<%- include('templates/head', {tittle: 'La carta', css: '<link rel="stylesheet" href="../../public/css/carta.css">'}) %>
-
-<%- include('templates/footer') %>
+<%- include('templates/head', {tittle: 'La carta' , css: '<link rel="stylesheet" href="../../public/css/carta.css">' }) %>
+    <section>
+        <% console.log(productOfDb.find(el => {el._id == productsOfCartByUser.userId})) %>
+            <% productsOfCartByUser.forEach(product => { %>
+                <div>
+                    <h3>
+                        <%= product.productName %>
+                    </h3>
+                    <img src="" alt="">
+                </div>
+                <% }) %>
+    </section>
+    <%- include('templates/footer') %>

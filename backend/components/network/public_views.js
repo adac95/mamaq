@@ -24,7 +24,8 @@ router.get('/cart', async (req, res) => {
         res.render('cart')
     } else {
         const productsOfCartByUser = productsCart[0].products
-        res.render('cart', { productsOfCartByUser })
+        const productOfDb = await ProdcutsModel.find();
+        res.render('cart', { productsOfCartByUser, productOfDb })
     }
 })
 module.exports = router;
