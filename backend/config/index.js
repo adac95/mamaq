@@ -15,7 +15,7 @@ const config = {
     dbUri: MONGO_URI,
     herokuUri: process.env.HEROKU_URI,
     secretToken: process.env.SECRET_TOKEN,
-    expireTimeCookieToken: process.env.EXPIRE_TIME_COOKIE_TOKEN,
+    expireTimeCookieToken: process.env.EXPIRE_TIME_COOKIE_TOKEN || 3000000000,
     expressSessionSecret: process.env.EXPRESS_SESSION_SECRET,
 }
 

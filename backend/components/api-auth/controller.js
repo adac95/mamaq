@@ -54,7 +54,7 @@ async function signUp(username, email, password, confirmPassword, roles) {
         const userRegister = await store.signUp(newUser)
         // crear Token de acceso
         const token = jwt.sign({ id: userRegister._id }, config.secretToken, {
-            expiresIn: 86400, // 24 hours
+            expiresIn: config.expireTimeCookieToken, // 24 hours
         });
         data = {token, userRegister}
         return data
@@ -89,7 +89,7 @@ async function signIn(username, password) {
         };
         //  Si todo esta bien creamos y devolvemos el token
         const token = jwt.sign({ id: foundUser._id, username: foundUser.username }, config.secretToken, {
-            expiresIn: 86400, // 24 hours
+            expiresIn: config.expireTimeCookieToken, // 24 hours
         });
         return token;
 

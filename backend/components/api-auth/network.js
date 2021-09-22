@@ -32,7 +32,7 @@ router.post('/sign-in', passport.authenticate('local', {  failureRedirect: '/adm
   try {
     const payload = { id: req.user._id, username: req.user.username, email: req.user.email }
     const token = jwt.sign(payload, config.secretToken, {
-      expiresIn: 30000000,
+      expiresIn: config.expireTimeCookieToken,
     });
     res.cookie("token", token, {
       // httpOnly: config.nodeEnv === "production" ? true : false,
