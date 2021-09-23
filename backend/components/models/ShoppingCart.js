@@ -14,6 +14,9 @@ const shoppingCartSchema = new Schema({
         productName: {
             type: String
         },
+        productImagenPath: {
+            type: String
+        },
         price: {
             type: Number,
             require: true

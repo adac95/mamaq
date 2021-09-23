@@ -1,12 +1,16 @@
 <%- include('templates/head', {tittle: 'La carta' , css: '<link rel="stylesheet" href="../../public/css/carta.css">' }) %>
     <section>
-        <% console.log(productOfDb.find(el => {el._id == productsOfCartByUser.userId})) %>
             <% productsOfCartByUser.forEach(product => { %>
                 <div>
                     <h3>
                         <%= product.productName %>
                     </h3>
-                    <img src="" alt="">
+                    <img src="<%= product.productImagenPath %> " alt="imagen del producto <%= product.productName %>">
+                    <p>Precio por unidad: <%= product.price %> soles</p>
+                    <label for="qtyCart">Cantidad</label>
+                    <input type="number" min="1" name="qtyCart" id="qtyCart" value="<%= product.cantidad %>">
+                    <button>Aceptar</button>
+                    <p>Total: <%= (parseFloat(product.cantidad)*parseFloat(product.price)) %> soles </p>
                 </div>
                 <% }) %>
     </section>

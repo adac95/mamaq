@@ -6,13 +6,14 @@ export function addProductsToCart() {
     document.addEventListener("click", async e => {
         try {
             if (e.target.matches(".template-btn-cart")) {
-                const { productid, userid, productname, productprice } = e.target.dataset
+                const { productid, userid, productname, productprice, productimagenpath } = e.target.dataset
                 const dataToAdd = {
                     userId: userid,
                     products: [
                         {
                             productId: productid,
                             productName: productname,
+                            productImagenPath: productimagenpath,
                             price: productprice,
                             cantidad: 1
                         }

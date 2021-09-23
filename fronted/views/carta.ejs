@@ -20,9 +20,8 @@
                 <%= img.category %>
             </p>
             <% if(user) {%>
-                <button id="addCartBtn" class="btn template-btn-cart carta__addCart-btn" data-productId="<%= img._id %>"
-                    data-userId="<%= user._id %>" data-productname="<%= img.name %>"
-                    data-productPrice="<%= img.price %>">Agregar al carrito</button>
+                <button id="addCartBtn" class="btn template-btn-cart carta__addCart-btn" data-productId="<%= img._id %>" data-userId="<%= user._id %>" data-productname="<%= img.name %>" data-productPrice="<%= img.price %>" data-productimagenpath="<%= img.imagen.path %> ">Agregar al
+                    carrito</button>
                 <% } %>
         </div>
         <% }); %>

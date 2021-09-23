@@ -1,8 +1,8 @@
 const ShoppingCartModel = require('../models/ShoppingCart')
 
-async function addCart({ userId, productId, price, cantidad }) {
+async function addCart({ userId, productId, price, cantidad, productImagenPath }) {
     const userCart = await ShoppingCartModel.findById(userId)
-    userCart.products.push({ productId, price, cantidad })
+    userCart.products.push({ productId, price, cantidad, productImagenPath })
     userCart.save()
 }
 

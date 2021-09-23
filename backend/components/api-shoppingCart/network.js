@@ -23,8 +23,8 @@ router.post('/',
     // [authJwt.isAuthenticated, authJwt.isAdmin, passport.authenticate('jwt', { session: false })],
     (req, res) => {
         const { userId, products } = req.body;
-        const {productId, productName, cantidad, price} = products[0]
-        controller.addProductToCart({ userId, productId, productName,cantidad, price })
+        const {productId, productName, cantidad, price, productImagenPath} = products[0]
+        controller.addProductToCart({ userId, productId, productName,cantidad, price, productImagenPath })
             .then(newCart => response.success(req, res, newCart, 200))
             .catch(error => response.error(req, res, "Error al crear usuario", 500, error))
     })
