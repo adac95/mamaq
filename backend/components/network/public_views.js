@@ -19,9 +19,11 @@ router.get('/carta', async (req, res) => {
 })
 
 router.get('/cart', async (req, res) => {
-    const productsCart = await ShoppingCartModel.find({ "userId": req.user.id })
+    let productsCart
+    req.user ? productsCart = await ShoppingCartModel.find({ "userId": req.user.id }) : productsCart = ""
     if (!productsCart[0]) {
-        res.render('cart')
+        const productsOfCartByUser = productsCart
+        res.render('cart', { productsOfCartByUser })
     } else {
         const productsOfCartByUser = productsCart[0].products
         res.render('cart', { productsOfCartByUser })

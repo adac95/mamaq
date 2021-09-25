@@ -2,10 +2,10 @@ import CrudService from "./CrudService.js";
 
 const crudService = new CrudService()
 
-export function addProductsToCart() {
+export function addProductsToCart(classOrId, setCounterDomIdOne, setCounterDomIdTwo) {
     document.addEventListener("click", async e => {
         try {
-            if (e.target.matches(".template-btn-cart")) {
+            if (e.target.matches(classOrId)) {
                 const { productid, userid, productname, productprice, productimagenpath } = e.target.dataset
                 const dataToAdd = {
                     userId: userid,
@@ -20,7 +20,12 @@ export function addProductsToCart() {
                     ]
                 }
                 await crudService.addProductToCart(dataToAdd)
-                setCounterDom()
+                if(setCounterDomIdOne.length > 1){
+                    await setCounterDom(setCounterDomIdOne)
+                }
+                if(setCounterDomIdTwo.length > 1){
+                    await setCounterDom(setCounterDomIdTwo)
+                }
             }
         } catch (error) {
             console.log(error)
@@ -63,10 +68,14 @@ async function getCartCounter() {
     }
 }
 
-export async function setCounterDom() {
-    const counter = await getCartCounter()
-    const $cartCounter = document.getElementById("cartCounter")
-    if ($cartCounter) {
-        $cartCounter.textContent = counter
-    } else return false
+export async function setCounterDom(setCounterDomId) {
+    try {
+        const counter = await getCartCounter()
+        const $cartCounter = document.getElementById(setCounterDomId)
+        if ($cartCounter) {
+            $cartCounter.textContent = counter
+        } else return false
+    } catch (error) {
+        console.log(error)
+    }
 }

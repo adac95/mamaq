@@ -1,17 +1,42 @@
-<%- include('templates/head', {tittle: 'La carta' , css: '<link rel="stylesheet" href="../../public/css/carta.css">' }) %>
-    <section>
-            <% productsOfCartByUser.forEach(product => { %>
-                <div>
-                    <h3>
-                        <%= product.productName %>
-                    </h3>
-                    <img src="<%= product.productImagenPath %> " alt="imagen del producto <%= product.productName %>">
-                    <p>Precio por unidad: <%= product.price %> soles</p>
-                    <label for="qtyCart">Cantidad</label>
-                    <input type="number" min="1" name="qtyCart" id="qtyCart" value="<%= product.cantidad %>">
-                    <button>Aceptar</button>
-                    <p>Total: <%= (parseFloat(product.cantidad)*parseFloat(product.price)) %> soles </p>
-                </div>
-                <% }) %>
+<%- include('templates/head', {tittle: 'La carta' , css: '<link rel="stylesheet" href="../../public/css/cart.css">' })
+    %>
+    <section class="cart-section">
+        <!-- NO EXISTE USUARIO LOGUEADO -->
+        <% if(!user) { %>
+            <p>hola</p>
+            <% } else{%>
+                <!-- EXISTE USUARIO PERO NO TIENE NINGUN PRODUCTO -->
+                <% if(productsOfCartByUser.length < 1){ %>
+                    <p>Carrito vacio</p>
+                    <% } %>
+                        <!-- EXISTE USUARIO CON CARRITO -->
+                        <h2 class="h2 cart__h2">Carrito</h2>
+                        <a id="cartCheckoutA" class="a cart__product-checkout-a" href="">Proceder al
+                            pago (<span id="cartCounterCheckoutCart"></span> productos)</a>
+                        <% productsOfCartByUser.forEach(product=> { %>
+                            <div class="cart__product-container">
+                                <img class="cart__product-img" src="<%= product.productImagenPath %> "
+                                    alt="imagen del producto <%= product.productName %>">
+                                <!-- SEPARACION IMG Y DETALLES -->
+                                <div class="cart__product-div">
+                                    <h3 class="cart__product-tittle">
+                                        <%= product.productName %>
+                                    </h3>
+                                    <p class="p cart__product-price">Precio por unidad: <%= product.price %> soles</p>
+                                    <button class="cartLessBtn btn cart__product-btn cart__product-btn--less">-</button>
+                                    <span class="cart__product-cantidad">
+                                        <%= product.cantidad %>
+                                    </span>
+                                    <button class="cartAddBtn btn cart__product-btn cart__product-btn--add"
+                                        data-productId="<%= product.productId %>" data-userId="<%= user._id %>"
+                                        data-productname="<%= product.productName %>"
+                                        data-productPrice="<%= product.price %>"
+                                        data-productimagenpath="<%= product.productImagenPath %>">+</button>
+                                    <p class="p cart__product-total">Total: <%=
+                                            (parseFloat(product.cantidad)*parseFloat(product.price)) %> soles </p>
+                                </div>
+                            </div>
+                            <% }) %>
+                                <% } %>
     </section>
     <%- include('templates/footer') %>

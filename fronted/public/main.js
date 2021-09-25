@@ -3,12 +3,13 @@ import slider from "./js/index/slider.js";
 import inputValidation from "./js/reservas/input-validation.js";
 import responsiveMap from "./js/reservas/responsive-map.js"
 import crud from "./js/create-products/main-crud.js";
-import {addProductsToCart, setCounterDom} from "./js/carta/index.js"
+import { addProductsToCart, setCounterDom } from "./js/carta/index.js"
+import { cartBtnAddProduct }from './js/cart/index.js'
 
 
 document.addEventListener("DOMContentLoaded", async () => {
     mobileNav()
-    await setCounterDom()
+    await setCounterDom("cartCounterHeaderNav")
     const path = window.location.pathname;
 
     switch (path) {
@@ -22,7 +23,12 @@ document.addEventListener("DOMContentLoaded", async () => {
             break;
 
         case "/carta":
-            addProductsToCart()
+            addProductsToCart(".template-btn-cart", "cartCounterHeaderNav")
+            break;
+
+        case "/cart":
+            await setCounterDom("cartCounterCheckoutCart")
+            await cartBtnAddProduct()
             break;
 
         case "/admin/create-products":
