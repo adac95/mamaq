@@ -4,7 +4,7 @@ const crudService = new CrudService()
 
 export async function cartBtnAddProduct() {
     try {
-        addProductsToCart(".cartAddBtn", "cartCounterCheckoutCart", "cartCounterHeaderNav")
+        addProductsToCart(".cartAddBtn")
     } catch (error) {
         console.log(error)
     }

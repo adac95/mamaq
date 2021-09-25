@@ -19,13 +19,16 @@ export function addProductsToCart(classOrId, setCounterDomIdOne, setCounterDomId
                         }
                     ]
                 }
+
                 await crudService.addProductToCart(dataToAdd)
-                if(setCounterDomIdOne.length > 1){
-                    await setCounterDom(setCounterDomIdOne)
-                }
-                if(setCounterDomIdTwo.length > 1){
-                    await setCounterDom(setCounterDomIdTwo)
-                }
+                // if(setCounterDomIdOne){
+                //     await setCounterDom(setCounterDomIdOne)
+                // }
+                // if(setCounterDomIdTwo){
+                //     await setCounterDom(setCounterDomIdTwo)
+                // }
+
+                location.reload()
             }
         } catch (error) {
             console.log(error)

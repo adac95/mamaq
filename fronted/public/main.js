@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             break;
 
         case "/carta":
-            addProductsToCart(".template-btn-cart", "cartCounterHeaderNav")
+            addProductsToCart(".template-btn-cart")
             break;
 
         case "/cart":
