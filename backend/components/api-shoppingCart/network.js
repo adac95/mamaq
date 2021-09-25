@@ -33,10 +33,12 @@ router.patch('/',
     // [authJwt.isAuthenticated, authJwt.isAdmin, passport.authenticate('jwt', { session: false })],
     (req, res) => {
         const { cartId, products } = req.body;
-        const {products_id, cantidad} = products[0]
+        const {products_id} = products[0]
+        let cantidad = products[0].cantidad
+        cantidad = cantidad.toString()
         controller.patchCart({ cartId, products_id, cantidad })
             .then(newCart => response.success(req, res, newCart, 200))
-            .catch(error => response.error(req, res, "Error al crear usuario", 500, error))
+            .catch(error => response.error(req, res, "Error al editar el carrito", 500, error))
     })
 
 router.delete('/:id',

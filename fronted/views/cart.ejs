@@ -23,7 +23,13 @@
                                         <%= product.productName %>
                                     </h3>
                                     <p class="p cart__product-price">Precio por unidad: <%= product.price %> soles</p>
-                                    <button class="cartLessBtn btn cart__product-btn cart__product-btn--less">-</button>
+                                    <button class="cartLessBtn btn cart__product-btn cart__product-btn--less"
+                                        data-productId="<%= product.productId %>" data-userId="<%= user._id %>"
+                                        data-products_id="<%= product._id %>"
+                                        data-productname="<%= product.productName %>"
+                                        data-productPrice="<%= product.price %>"
+                                        data-productCantidad="<%= product.cantidad %>"
+                                        data-productimagenpath="<%= product.productImagenPath %>">-</button>
                                     <span class="cart__product-cantidad">
                                         <%= product.cantidad %>
                                     </span>
@@ -31,6 +37,7 @@
                                         data-productId="<%= product.productId %>" data-userId="<%= user._id %>"
                                         data-productname="<%= product.productName %>"
                                         data-productPrice="<%= product.price %>"
+                                        data-productCantidad="<%= product.cantidad %>"
                                         data-productimagenpath="<%= product.productImagenPath %>">+</button>
                                     <p class="p cart__product-total">Total: <%=
                                             (parseFloat(product.cantidad)*parseFloat(product.price)) %> soles </p>

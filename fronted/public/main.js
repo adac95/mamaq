@@ -4,7 +4,7 @@ import inputValidation from "./js/reservas/input-validation.js";
 import responsiveMap from "./js/reservas/responsive-map.js"
 import crud from "./js/create-products/main-crud.js";
 import { addProductsToCart, setCounterDom } from "./js/carta/index.js"
-import { cartBtnAddProduct }from './js/cart/index.js'
+import { cartBtnAddProduct, cartBtnLessProduct }from './js/cart/index.js'
 
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         case "/cart":
             await setCounterDom("cartCounterCheckoutCart")
             await cartBtnAddProduct()
+            await cartBtnLessProduct()
             break;
 
         case "/admin/create-products":

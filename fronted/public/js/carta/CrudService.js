@@ -65,14 +65,14 @@ export default class CrudService {
         }
     }
 
-    async patchCart(data, id) {
+    async patchCart(data) {
         try {
             let options = {
                 method: "PATCH",
                 headers: this.setHeaders(),
                 body: JSON.stringify(data)
             };
-            let res = await fetch(`${this.URI}/${id}`, options);
+            let res = await fetch(`${this.URI}`, options);
             let json = await res.json();
             return json
         } catch (error) {

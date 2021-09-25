@@ -18,20 +18,24 @@ async function deleteCart(id) {
 }
 
 async function patchCart({ cartId, products_id, cantidad }) {
-    // valida que llegue el id y la data para actualizar
-    if (!cartId || !products_id || !cantidad) {
-        const message = "faltan datos para actualizar tu carrito de compras"
-        console.log(message)
-        return message
-    }
-    const cart = await ShoppingCartModel.findById(cartId)
-    const findingIdProductToPatch = cart.products.find(e => e._id == products_id)
-    if (cantidad < 1) {
-        deleteOneProductOfCart({ cartId, products_id })
-    } else {
-        findingIdProductToPatch.cantidad = cantidad;
-        const cartUpdated = await cart.save()
-        return cartUpdated
+    try {
+        // valida que llegue el id y la data para actualizar
+        if (!cartId || !products_id || !cantidad) {
+            const message = "faltan datos para actualizar tu carrito de compras"
+            console.log(message)
+            return message
+        }
+        const cart = await ShoppingCartModel.findById(cartId)
+        const findingIdProductToPatch = await  cart.products.find((e) => e._id == products_id)
+        if (cantidad < 1) {
+            await deleteOneProductOfCart({ cartId, products_id })
+        } else {
+            findingIdProductToPatch.cantidad = cantidad;
+            const cartUpdated = await cart.save()
+            return cartUpdated
+        }
+    } catch (error) {
+        console.log(error)
     }
 }
 
@@ -78,7 +82,7 @@ async function addProductToCart({ userId, productId, productName, cantidad, pric
             return productAggregated
         } else {
             // Si no existe el producto en el carrito en agrega al array y se guarda el carrito
-            await userCart.products.push({ productId, productName,cantidad, price, productImagenPath })
+            await userCart.products.push({ productId, productName, cantidad, price, productImagenPath })
             await userCart.save()
             return userCart
 
