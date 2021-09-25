@@ -38,6 +38,7 @@
     width: 3rem;
     font-size: 2rem;
     border-radius: 10px;
+    cursor: pointer;
 }
 .cart__product-btn--less{
     background-color: rgb(194, 38, 18);

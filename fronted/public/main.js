@@ -8,8 +8,10 @@ import { cartBtnAddProduct, cartBtnLessProduct }from './js/cart/index.js'
 
 
 document.addEventListener("DOMContentLoaded", async () => {
+    
     mobileNav()
     await setCounterDom("cartCounterHeaderNav")
+    
     const path = window.location.pathname;
 
     switch (path) {
