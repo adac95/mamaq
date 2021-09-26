@@ -1,14 +1,14 @@
 export default function mobileNav() {
     const $menuBtn = document.getElementById("menuBtn");
-    const $nav = document.getElementById("nav");
+    const $nav = document.getElementById("navHeader");
     
     document.addEventListener("click", e => {
         if(e.target === $menuBtn) {
-            $nav.classList.toggle("nav-active");
+            $nav.classList.toggle("navHeader-active");
         }
         
-        if(e.target.matches(".nav__a") || e.target.matches(".img-nav")) {
-            $nav.classList.remove("nav-active");
+        if(e.target.matches(".navHeader__a") || e.target.matches(".img-nav")) {
+            $nav.classList.remove("navHeader-active");
         }
     })
 }

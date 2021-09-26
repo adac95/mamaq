@@ -16,7 +16,7 @@
     .header__img-container {
         width: 90px;
     }
-    .nav {
+    .navHeader {
         position: static;
         height: 100%;
         flex-direction: initial;
@@ -26,16 +26,16 @@
         transition: none;
         background-color: transparent;
     }
-    .nav__a{
+    .navHeader__a{
         width: unset;
         height: auto;
         padding: 0 1rem;
         border-left: 1px solid var(--second-color);
     }
-    .nav__a:first-child {
+    .navHeader__a:first-child {
         border-left: none;
     }
-    .nav__btn{
+    .navHeader__btn{
         display: none;
     }
 }

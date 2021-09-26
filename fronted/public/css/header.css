@@ -94,7 +94,7 @@
     width: inherit; 
 }
 
-.nav {
+.navHeader {
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -110,7 +110,7 @@
     background-color: var(--primary-color);
 }
 
-.nav__a {
+.navHeader__a {
     display: flex;
     justify-content:center;
     align-items:center;
@@ -127,11 +127,11 @@
     fill: var(--white-color);
 }
 
-.nav-active {
+.navHeader-active {
     transform: translate(0%,0);   
 }
 
-.nav__btn {
+.navHeader__btn {
     width: 40px;
     height: 40px;
     border-radius: 5px;
