@@ -1,3 +1,13 @@
+<% if(error_msg.length > 0) { %>
+  <p class="p error-flash__p">
+    <%= error_msg %>
+  </p>
+  <% } %>
+    <% if(error.length > 0) { %>
+      <p class="p error-flash__p">
+        <%= error %>
+      </p>
+      <% } %>
 <section class="signin-section">
     <form id="signinForm" class="container mt-5" action="../api/auth/sign-in" method="POST">
       <div class="align-items-center container-sm fs-5">

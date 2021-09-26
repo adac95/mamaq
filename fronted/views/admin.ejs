@@ -2,16 +2,6 @@
   css: '<link rel="stylesheet" href="../public/css/admin.css"><link rel="stylesheet" href="../../public/css/components/loginout.css">' }) %>
 
   <main class="main">
-    <% if(error_msg.length > 0) { %>
-      <p class="p error-flash__p">
-        <%= error_msg %>
-      </p>
-      <% } %>
-        <% if(error.length > 0) { %>
-          <p class="p error-flash__p">
-            <%= error %>
-          </p>
-          <% } %>
             <% if(!user) { %>
               <!-- SIGN IN -->
               <%- include('templates/components/loginout') %> 

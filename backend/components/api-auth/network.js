@@ -10,10 +10,10 @@ const passport = require('passport')
 router.post('/sign-up', (req, res) => {
   const { username, email, password, confirmPassword, roles } = req.body
   controller.signUp(username, email, password, confirmPassword, roles)
-    .then((data) => {
+    .then(async (data) => {
       const { token, userRegister } = data
       if (token) {
-        passport.authenticate('local', { failureRedirect: '/', failureFlash: true })(req, res, () => {
+        passport.authenticate('local', { failureRedirect: '../../login', failureFlash: true })(req, res, () => {
           res.status(200).cookie("token", token, {
             maxAge: config.expireTimeCookieToken,
             // httpOnly: config.nodeEnv === "production" ? true : false,
@@ -22,14 +22,14 @@ router.post('/sign-up', (req, res) => {
         })
       } else {
         req.flash("error_msg", data)
-        res.redirect('/admin')
+        res.redirect('../../login')
       }
     })
     .catch(error => response.error(req, res, "Error al registrarse", 500, error))
 })
 
 // SIGNIN 
-router.post('/sign-in', passport.authenticate('local', { failureRedirect: '/admin', failureFlash: true }), async function (req, res) {
+router.post('/sign-in', passport.authenticate('local', { failureRedirect: '../../login', failureFlash: true }), async function (req, res) {
   try {
     const payload = { id: req.user._id, username: req.user.username, email: req.user.email }
     const token = jwt.sign(payload, config.secretToken, {
