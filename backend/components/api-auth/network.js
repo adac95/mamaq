@@ -18,7 +18,7 @@ router.post('/sign-up', (req, res) => {
             maxAge: config.expireTimeCookieToken,
             // httpOnly: config.nodeEnv === "production" ? true : false,
             // secure: config.nodeEnv === "production" ? true : false
-          }).redirect("../../admin")
+          }).redirect("../../")
         })
       } else {
         req.flash("error_msg", data)
@@ -41,17 +41,17 @@ router.post('/sign-in', passport.authenticate('local', { failureRedirect: '/admi
       //   // secure: config.nodeEnv === "production" ? true : false
     }
     )
-    res.redirect("../../admin")
+    res.redirect("../../")
   } catch (error) {
     res.send(error)
   }
 });
 
 // LOGOUT
-router.get('/logout', (req, res) => {
-  req.logout()
-  res.clearCookie("token")
-  res.redirect('/admin')
+router.get('/logout', async (req, res) => {
+  await req.logout()
+  await res.clearCookie("token")
+  res.redirect('/')
 })
 
 module.exports = router

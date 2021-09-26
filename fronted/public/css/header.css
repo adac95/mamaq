@@ -8,7 +8,6 @@
     padding-right: 2rem;
     background-color: var(--header-color-mobile);
     color: var(--white-color);
-
 }
 
 .datos__p {
@@ -51,6 +50,17 @@
     color: red;
     background-color: #000;
     border-color: red;
+}
+/* SI NO EXISTE USUARIO */
+
+.header__datos-loginout{
+    color: var(--white-color);
+    border: solid 1px var(--orange-color);
+    padding: 0 1rem;
+    border-radius: 20px;
+}
+.header__datos-loginout:hover{
+    color: var(--orange-color);
 }
 
 /* NORMAL */

@@ -13,6 +13,10 @@ router.get('/reservas', (req, res) => {
     res.render('reservas')
 })
 
+router.get('/login', (req, res) => {
+    res.render('loginout')
+})
+
 router.get('/carta', async (req, res) => {
     const imgUploads = await ProdcutsModel.find();
     res.render('carta', { imgUploads })

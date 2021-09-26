@@ -1,0 +1,56 @@
+<section class="signin-section">
+    <form id="signinForm" class="container mt-5" action="../api/auth/sign-in" method="POST">
+      <div class="align-items-center container-sm fs-5">
+        <div class="form-floating mb-2">
+          <input id="floatingUsername-signin" name="username" type="text" class="form-control "
+            placeholder="Username" required>
+          <label for="floatingInput">Username</label>
+        </div>
+        <div class="form-floating">
+          <input id="floatingPassword-signin" name="password" type="password" class="form-control"
+            placeholder="Password" required>
+          <label for="floatingPassword">Contraseña</label>
+        </div>
+        <div class="form-check form-switch">
+          <input id="flexSwitchCheckDefault-signin" class="form-check-input" type="checkbox">
+          <label class="form-check-label " for="flexSwitchCheckDefault">Recordarme</label>
+        </div>
+        <div class="d-grid gap-2">
+          <button id="signinBtn" class="btn btn-warning" type="submit">Iniciar sesión</button>
+        </div>
+      </div>
+    </form>
+    <div class="forget-container">
+      <p class="p forget__p">Olvidaste tus datos? <a class="a forget__a">Haz click aquí</a></p>
+    </div>
+  </section>
+  <!-- SIGN UP -->
+  <section class="signup-section">
+    <form id="signupForm" class="container mt-5" action="/api/auth/sign-up" method="POST">
+      <div class="align-items-center container-sm fs-5">
+        <div class="form-floating mb-2">
+          <input name="username" type="text" class="form-control " id="floatingUsername-signup"
+            placeholder="Username" required>
+          <label for="floatingInput">Username</label>
+        </div>
+        <div class="form-floating mb-2">
+          <input name="email" type="text" class="form-control " id="floatingEmail-signup"
+            placeholder="Username" required>
+          <label for="floatingInput">Email</label>
+        </div>
+        <div class="form-floating mb-2">
+          <input id="floatingPassword-signup" name="password" type="password" class="form-control"
+            placeholder="Password" required>
+          <label for="floatingPassword">Contraseña</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input id="floatingPassword-repeatPassword-signup" type="password" name="confirmPassword"
+            class="form-control" placeholder="Password">
+          <label for="floatingPassword" required>Confirmar contraseña</label>
+        </div>
+        <div class="d-grid gap-2">
+          <button id="signupBtn" class="btn btn-warning" type="submit">Crear cuenta</button>
+        </div>
+      </div>
+    </form>
+  </section>

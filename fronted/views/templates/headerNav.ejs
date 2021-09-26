@@ -1,5 +1,5 @@
 <% if (user){%>
-    <div class="header__datos-container">
+<div class="header__datos-container">
         <p class="p nav__p datos__p">Hola <span class="nav__p-username">
                 <%= user.username %>
             </span></p>
@@ -26,6 +26,10 @@
                     </div>
                     <a class="a btn datos__btn" href="/api/auth/logout">Cerrar sesión</a>
     </div>
+    <% }else { %>
+        <div class="header__datos-container">
+        <a class="a header__datos-loginout" href="/login"><p class="p nav__p datos__p">Hola inicia sesion o registrate!</p></a>
+    </div>    
     <% } %>
         <header class="header">
             <section class="header__logo-container">
