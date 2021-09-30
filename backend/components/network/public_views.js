@@ -17,6 +17,10 @@ router.get('/login', (req, res) => {
     res.render('loginout')
 })
 
+router.get('/checkout', (req, res) => {
+    res.render('checkout')
+})
+
 router.get('/carta', async (req, res) => {
     const imgUploads = await ProdcutsModel.find();
     res.render('carta', { imgUploads })
