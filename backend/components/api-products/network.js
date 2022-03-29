@@ -3,10 +3,11 @@ const router = express.Router()
 const response = require('../utils/response')
 const controller = require("./controller")
 // middlewares
+const cors = require('cors')
 const passport = require('passport')
 const authJwt = require('../middlewares/auth')
 
-router.get('/', (req, res) => {
+router.get('/',cors(), (req, res) => {
     controller.getAllproducts()
         .then((data) => {
             response.success(req, res, data, 200)
