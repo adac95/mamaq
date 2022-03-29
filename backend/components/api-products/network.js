@@ -6,7 +6,7 @@ const controller = require("./controller")
 const cors = require('cors')
 const passport = require('passport')
 const authJwt = require('../middlewares/auth')
-
+// usando cors
 router.get('/',cors(), (req, res) => {
     controller.getAllproducts()
         .then((data) => {
