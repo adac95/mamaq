@@ -5,6 +5,8 @@ const User = require('../../../models/Users')
 passport.use(new LocalStrategy(
     async function (username, password, done) {
         await User.findOne({ username: username }, async function (err, user) {
+            try {
+                
                 if (err) { return done(err); }
                 if (!user) {
                     return done(null, false, { message: 'Incorrect username.' });
@@ -15,6 +17,9 @@ passport.use(new LocalStrategy(
                 }
                 const userNopass = await User.findById(user._id, { password: 0 })
                 return done(null, userNopass);
+            } catch (error) {
+                console.log("Error desde Login passport", error)
+            }
 
         });
     }

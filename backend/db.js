@@ -10,7 +10,7 @@ const MONGO_URI = `mongodb+srv://${USER}:${PASSWORD}@cluster0.pnsvs.mongodb.net/
 mongoose.Promise = global.Promise
 
 async function connectDB() {
-    await mongoose.connect(MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false})
+    await mongoose.connect(MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true})
     console.log('Base de datos conectada con exito')
 }
 
