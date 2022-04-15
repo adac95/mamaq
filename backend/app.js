@@ -13,6 +13,9 @@ const cookieParser = require('cookie-parser')
 const MongoStore = require('connect-mongo');
 const config = require('./config/index')
 const passport = require('passport')
+const cors = require('cors')
+
+app.use(cors())
 
 // localstrategy Passport
 require('./components/api-auth/passport/strategys/login');
